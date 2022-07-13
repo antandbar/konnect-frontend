@@ -1,66 +1,71 @@
 import { Link, NavLink } from 'react-router-dom';
 import classNames from 'classnames';
-import '../style.css';
+import '../../assets/scss/style.scss';
 import logo from '../../assets/img/konnect-logo.svg';
-import AuthButton from '../auth/AuthButton';
 import { useTranslation } from 'react-i18next';
+import '../../assets/js/script.js';
+import LanguageSwitcher from '../common/LanguageSwitcher';
 
 function Header({ className }) {
   const { t } = useTranslation("global");
   return (
     /* imagen corporativa */
     <header>
+         <div className="logo-container">
        <Link to="/">
           <img src={logo} className="logo" alt="konnect-logo"></img>
         </Link>
-      <div className="logo-container">
-       
+       </div>
+  
         {/* links a crear anuncio y todos los anuncios */}
-        <nav className="main-menu">
-          <NavLink
-            to="/activities/activities"
-            className={classNames(
-              ({ isActive }) => (isActive ? 'active' : ''),
-              'menu-item actividades',
-            )}
-          >
-            <span className="menu-title">{t("header.activities")}</span>
-          </NavLink>
+        <nav>
+          <ul className="main-menu">
+          <li className='menu-item actividades'>
+              <NavLink
+                to="/activities/activities"
+                className={classNames(
+                  ({ isActive }) => (isActive ? 'active' : ''))}>
+                      <span className="menu-title">{t("header.activities")}</span>
+              </NavLink>  
+          </li> 
+          <li className="menu-item planes">
           <NavLink
             to="/myplans"
             className={classNames(
-              ({ isActive }) => (isActive ? 'active' : ''),
-              'menu-item planes',
-            )}
-          >
-            <span className="menu-title">{t("header.my-plans")}</span>
+              ({ isActive }) => (isActive ? 'active' : ''))}>
+                  <span className="menu-title">{t("header.my-plans")}</span>
           </NavLink>
-
+          </li>
+          <li className="menu-item cuenta">
           <NavLink
             to="/myaccount"
             className={classNames(
-              ({ isActive }) => (isActive ? 'active' : ''),
-              'menu-item cuenta',
-            )}
-            end
-          >
-            <span className="menu-title">{t("header.my-account")}</span>
+              ({ isActive }) => (isActive ? 'active' : '') )}end>
+                  <span className="menu-title">{t("header.my-account")}</span>
           </NavLink>
-
+          </li>
+          <li className="menu-item new-activity menu-btn">
           <NavLink
             to="/"
             className={classNames(
-              ({ isActive }) => (isActive ? 'active' : ''),
-              'menu-item new-activity',
-            )}
-        
-          >
-            <span className="menu-title">{t("header.create-activity")}</span>
+              ({ isActive }) => (isActive ? 'active' : ''))}>
+                  <span className="menu-title">{t("header.create-activity")}</span>
           </NavLink>
-          {/* botón para ir a login/logout */}
-          <AuthButton className="menu-item menu-btn login" />
+          </li>
+          <li className="menu-item menu-btn login">
+          <NavLink
+            to="/login"
+            className={classNames(
+              ({ isActive }) => (isActive ? 'active' : ''))}>
+                <span className="menu-title">{t("header.login")}</span>
+          </NavLink>
+          </li>
+          <li>
+          <LanguageSwitcher></LanguageSwitcher>
+          </li>
+          </ul>
+
         </nav>
-      </div>
     </header>
   );
 }

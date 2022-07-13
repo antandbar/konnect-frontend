@@ -3,7 +3,8 @@
     "activities": "Activities",
     "my-plans": "My Plans",
     "my-account": "My Account",
-    "create-activity": "Create Activity"
+    "create-activity": "Create Activity",
+    "login":"Login"
   },
   "my-account": {
     "title": "My Account",
@@ -12,23 +13,29 @@
     "name": "Your name",
     "password": "Your password",
     "age": "Your age",
-    "gender": "Gender",
-    "location": "Location",
+    "gender": "Your gender",
+    "location": "Your location",
     "bio": "Bio",
     "update-profile": "Update profile"
   },
+  "login":{
+    "title": "Login",
+    "subtitle":"Access and start making plans",
+    "email": "Email",
+    "password": "Password",
+    "register": "Register"
+  },
   "create-activity": {
     "title": "Create a new activity",
-    "subtitle1": "So other users can join your plan",
-    "subtitle2": "Give us more information about the activity",
-    "tell-plan": "tell us your plan!",
+    "subtitle": "So people can join your plan",
+    "group-two-title": "Give us more information about the activity",
+    "group-one-title": "Tell us about your plan!",
     "name": "Choose a title for the activity",
-    "detail": "Describe a little more what the activity consists of",
-    "category": "To which category does it belong?",
+    "detail": "Describe a little more the activity",
+    "category": "Now choose a category",
     "date": "Activity date",
     "location": "Location",
-    "place": "Place where it starts",
-    "attendance": "Is there an attendance limit?",
+    "place": "Place",
     "create-activity": "Create activity"
   }
 }

@@ -1,4 +1,4 @@
-const InputSearch = ({ className, label, ...props }) => {
+const InputStandar = ({ className, label, ...props }) => {
   return (
     <div className={className}>
       <label>{label}</label>
@@ -7,4 +7,4 @@ const InputSearch = ({ className, label, ...props }) => {
   );
 };
 
-export default InputSearch;
+export default InputStandar;
