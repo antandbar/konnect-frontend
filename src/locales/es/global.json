@@ -1,0 +1,34 @@
+{
+  "header": {
+    "activities": "Actividades",
+    "my-plans": "Mis planes",
+    "my-account": "Mi cuenta",
+    "create-activity": "Crear actividad"
+  },
+  "my-account": {
+    "title": "Mi cuenta",
+    "user-name": "Nombre de usuario",
+    "email": "Tu email",
+    "name": "Tu nombre",
+    "password": "Tu contraseña",
+    "age": "Tu edad",
+    "gender": "Genero",
+    "location": "Ubiación",
+    "bio": "Bio",
+    "update-profile": "Actualizar perfil"
+  },
+  "create-activity": {
+    "title": "Crear una nueva actividad",
+    "subtitle1": "Así otros usuarios podrán unirse a tu plan",
+    "subtitle2": "Danos más datos sobre la actividad",
+    "tell-plan": "¡Cuentanos tu plan!",
+    "name": "Elige un título para la actividad",
+    "detail": "Describe un poco más en qué consiste la actividad",
+    "category": "¿A qué categoría pertenece?",
+    "date": "Fecha de la actividad",
+    "location": "Ubicación",
+    "place": "Lugar donde comienza",
+    "attendance": "¿Hay límite de asistencia?",
+    "create-activity": "Crear actividad"
+  }
+}

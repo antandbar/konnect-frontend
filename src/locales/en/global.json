@@ -1,0 +1,34 @@
+{
+  "header": {
+    "activities": "Activities",
+    "my-plans": "My Plans",
+    "my-account": "My Account",
+    "create-activity": "Create Activity"
+  },
+  "my-account": {
+    "title": "My Account",
+    "user-name": "User Name",
+    "email": "Your email",
+    "name": "Your name",
+    "password": "Your password",
+    "age": "Your age",
+    "gender": "Gender",
+    "location": "Location",
+    "bio": "Bio",
+    "update-profile": "Update profile"
+  },
+  "create-activity": {
+    "title": "Create a new activity",
+    "subtitle1": "So other users can join your plan",
+    "subtitle2": "Give us more information about the activity",
+    "tell-plan": "tell us your plan!",
+    "name": "Choose a title for the activity",
+    "detail": "Describe a little more what the activity consists of",
+    "category": "To which category does it belong?",
+    "date": "Activity date",
+    "location": "Location",
+    "place": "Place where it starts",
+    "attendance": "Is there an attendance limit?",
+    "create-activity": "Create activity"
+  }
+}

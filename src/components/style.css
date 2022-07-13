@@ -1,0 +1,516 @@
+/*IMPORTS*/
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap");
+/*VARIABLES*/
+/*Colores*/
+/*Tipografias*/
+/*Efectos*/
+/*GENERAL*/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;
+  font-family: "Raleway";
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+/*HEADER*/
+header {
+  /*Desktop - default*/
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5rem;
+  z-index: 80000;
+  /*Responsive */
+}
+header .logo-container {
+  display: flex;
+}
+header img.logo {
+  max-width: 200px;
+}
+header .main-menu {
+  list-style: none;
+  display: flex;
+  column-gap: 2.5rem;
+  align-items: center;
+  font-family: "Dosis";
+}
+header .main-menu .active {
+  padding: 3px 15px;
+  border-radius: 25px;
+  background-color: #cff1f4;
+}
+header .main-menu li .menu-title {
+  font-size: 1.2rem;
+}
+header .main-menu li.login {
+  background-color: black;
+  justify-content: flex-start;
+  color: white;
+}
+header .main-menu .menu-btn {
+  padding: 3px 15px;
+  border-radius: 25px;
+}
+@media (max-width: 1030px) {
+  header {
+    padding: 0 1rem;
+  }
+  header img.logo {
+    max-width: 145px;
+  }
+  header .main-menu {
+    list-style: none;
+    display: flex;
+    column-gap: 1.4rem;
+  }
+}
+@media (max-width: 767px) {
+  header {
+    flex-direction: column;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    left: 0;
+  }
+  header .logo-container {
+    width: 100%;
+    padding: 20px 0;
+    background-color: white;
+    text-align: center;
+    justify-content: center;
+    position: fixed;
+    box-shadow: 0 0px 6px 4px rgba(0, 0, 0, 0.1254901961);
+  }
+  header .main-menu {
+    width: 100%;
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+    padding: 13px 0;
+    justify-content: space-around;
+    margin-bottom: 0;
+    box-shadow: 0 0px 6px 4px rgba(0, 0, 0, 0.1254901961);
+  }
+}
+
+main.wrapper {
+  width: 80%;
+  max-width: 1200px;
+  margin: auto;
+  padding-top: 40px;
+  position: relative;
+  /*FORMS*/
+}
+main.wrapper .page-heading {
+  font-family: "Dosis";
+}
+main.wrapper .page-heading h1 {
+  font-size: 4rem;
+  line-height: 4rem;
+  font-weight: 500;
+  text-align: center;
+  color: #61d1d9;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+main.wrapper .page-heading .page-subtitle {
+  font-size: 2.5rem;
+  line-height: 2.5rem;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 0;
+}
+main.wrapper .form * {
+  font-family: "Raleway";
+}
+main.wrapper .form textarea, main.wrapper .form input[type=email], main.wrapper .form input[type=number], main.wrapper .form input[type=password], main.wrapper .form input[type=text], main.wrapper .form input[type=date] {
+  padding: 5px 20px;
+  border-radius: 20px;
+  border: none;
+  background-color: #e8f2f3;
+  font-size: 1.2rem;
+}
+main.wrapper .form textarea:focus-visible, main.wrapper .form input[type=email]:focus-visible, main.wrapper .form input[type=number]:focus-visible, main.wrapper .form input[type=password]:focus-visible, main.wrapper .form input[type=text]:focus-visible, main.wrapper .form input[type=date]:focus-visible {
+  outline-color: #d4eef0;
+}
+main.wrapper .form textarea:disabled, main.wrapper .form input[type=email]:disabled, main.wrapper .form input[type=number]:disabled, main.wrapper .form input[type=password]:disabled, main.wrapper .form input[type=text]:disabled, main.wrapper .form input[type=date]:disabled {
+  background-color: #c0d2d4;
+}
+main.wrapper .form .select-wrapper {
+  position: relative;
+}
+main.wrapper .form .select-wrapper:after {
+  content: "";
+  background-image: url(../assets/img/down.svg);
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  position: absolute;
+  right: 30px;
+  top: 30%;
+}
+main.wrapper .form select {
+  appearance: none;
+  background-color: #e8f2f3;
+  border: none;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  padding: 8px 20px;
+  margin: 0;
+  width: 100%;
+}
+main.wrapper .form .genero-container > div {
+  display: flex;
+  justify-content: center;
+  column-gap: 20px;
+}
+main.wrapper .form input[type=radio] {
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  width: 1.15em;
+  height: 1.15em;
+  border: 1px solid #2786a3;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+main.wrapper .form input[type=radio]:checked {
+  background-color: #d4eef0;
+}
+main.wrapper .form .submit-btn {
+  background-color: #61d1d9;
+  border: none;
+  padding: 5px 20px;
+  font-size: 1.3rem;
+  border-radius: 20px;
+  margin: auto;
+  display: block;
+  cursor: pointer;
+}
+main.wrapper .form .formfield {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+main.wrapper .form .formfield .extra-info {
+  display: block;
+  font-size: 0.9rem;
+  color: #727272;
+  font-weight: 300;
+}
+main.wrapper .form .formfield label {
+  margin-bottom: 5px;
+  margin-left: 20px;
+  color: #2786a3;
+  font-weight: 500;
+}
+main.wrapper .form .formfield.remember-me {
+  flex-direction: row;
+  column-gap: 10px;
+}
+main.wrapper .form.login-form {
+  max-width: 500px;
+  margin: auto;
+  background-color: white;
+  padding: 35px;
+  box-shadow: 0px 0px 10px 7px rgba(0, 0, 0, 0.05);
+  border-radius: 30px;
+}
+main.wrapper .form.login-form .back-to-login {
+  color: #727272;
+  font-weight: 400;
+  margin-bottom: 15px;
+  display: flex;
+  column-gap: 6px;
+}
+main.wrapper .form.login-form .back-icon {
+  width: 20px;
+}
+main.wrapper .form.login-form .forgot-password-link a {
+  font-style: italic;
+  color: #727272;
+  font-weight: 300;
+}
+main.wrapper .form .form-controls + .submit-btn {
+  margin-top: 20px;
+}
+main.wrapper .form .form-controls img {
+  width: 30px;
+  cursor: pointer;
+}
+main.wrapper .form .form-controls img:hover {
+  background-color: #e8f2f3;
+  border-radius: 50%;
+}
+main.wrapper .form .register-group {
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+}
+main.wrapper .form .register-group textarea, main.wrapper .form .register-group input[type=email], main.wrapper .form .register-group input[type=password],
+main.wrapper .form .register-group input[type=text] {
+  padding: 10px 20px;
+}
+main.wrapper .form .register-group .fieldgroup-title {
+  font-size: 1.8rem;
+  color: #2786a3;
+  font-weight: 600;
+  font-family: "Dosis";
+}
+main.wrapper .form .register-group .formfield {
+  margin-bottom: 30px;
+}
+main.wrapper .form .register-group .formfield label {
+  margin-left: 0;
+}
+main.wrapper .form .register-group#group-2, main.wrapper .form .register-group#group-3 {
+  display: none;
+}
+main.wrapper .login-google {
+  margin-top: 30px;
+}
+main.wrapper .login-google p {
+  text-align: center;
+}
+main.wrapper .link-to-registro {
+  color: #2786a3;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 30px;
+  background: #d4eef0;
+  padding: 1px 30px;
+  width: fit-content;
+  border-radius: 10px;
+  margin: auto;
+  margin-top: 40px;
+}
+main.wrapper .link-to-registro a {
+  font-weight: 600;
+}
+main.wrapper .listing-container {
+  display: flex;
+  column-gap: 3%;
+}
+main.wrapper .listing-filters {
+  width: 22%;
+  display: inline-block;
+}
+main.wrapper .listing-filters .title {
+  color: #2786a3;
+  font-size: 1.2rem;
+  font-family: "Dosis";
+  margin-bottom: 3px;
+}
+main.wrapper .listing-filters label {
+  font-size: 0.9rem;
+}
+main.wrapper .listing-filters input[type=checkbox] {
+  display: none;
+}
+main.wrapper .listing-filters input[type=checkbox] + span {
+  display: flex;
+  column-gap: 5px;
+}
+main.wrapper .listing-filters input[type=checkbox] + span:before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+main.wrapper .listing-filters input[type=checkbox]:checked + span {
+  font-weight: 500;
+}
+main.wrapper .listing-filters input[type=checkbox]:checked + span:before {
+  background-color: #61d1d9;
+}
+main.wrapper .listing-filters input[type=date] {
+  padding: 5px 20px;
+  border-radius: 20px;
+  border: none;
+  background-color: #e8f2f3;
+  font-weight: 300;
+}
+main.wrapper .listing-filters input[type=date]:focus-visible {
+  outline-color: #d4eef0;
+}
+main.wrapper .listing-filters article:not(:last-child) {
+  border-bottom: 1px solid #d4eef0;
+  padding-bottom: 20px;
+}
+main.wrapper .plans-selector {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  column-gap: 30px;
+}
+main.wrapper .plans-selector div {
+  cursor: pointer;
+}
+main.wrapper .plans-selector .activo {
+  font-weight: 600;
+  color: #61d1d9;
+}
+main.wrapper .activities-section.activities-listing {
+  width: 75%;
+  display: inline-block;
+}
+main.wrapper .activities-section.activities-listing article {
+  margin-bottom: 30px;
+}
+main.wrapper .activities-section.activities-plans {
+  width: 70%;
+  margin: auto;
+}
+main.wrapper .activities-section .activities-item {
+  background-color: #e8f2f3;
+  border-radius: 20px;
+  padding: 30px;
+  position: relative;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+main.wrapper .activities-section .row {
+  display: flex;
+  column-gap: 20px;
+  position: relative;
+}
+main.wrapper .activities-section .row.ends {
+  justify-content: space-between;
+}
+main.wrapper .activities-section .activity-data {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+main.wrapper .activities-section .category {
+  background-color: #2786a3;
+  width: fit-content;
+  padding: 5px 10px;
+  justify-content: flex-start;
+  border-radius: 20px;
+  color: white;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  margin-bottom: 0;
+}
+main.wrapper .activities-section .icon {
+  width: 25px;
+}
+main.wrapper .activities-section h1.title, main.wrapper .activities-section h2.title {
+  font-size: 2rem;
+  font-family: "Dosis";
+  font-weight: 400;
+  margin-top: 0;
+  line-height: 2rem;
+}
+main.wrapper .activities-section * {
+  margin: 0;
+}
+main.wrapper .activities-section .signup {
+  color: #2786a3;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  column-gap: 5px;
+}
+main.wrapper .activities-section .signup span {
+  font-weight: 600;
+}
+main.wrapper .activities-section .signup .icon {
+  width: 16px;
+  margin-right: 2px;
+}
+main.wrapper .activities-section .interested {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  display: flex;
+  align-items: center;
+}
+main.wrapper .activities-section .interested .interested-btn {
+  border: none;
+  background-color: transparent;
+  background-image: url("../assets/img/fav-0.svg");
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+main.wrapper .activities-section .interested .interested-btn.active {
+  background-image: url("../assets/img/fav-1.svg");
+}
+main.wrapper .activities-section.activity-detail {
+  background-color: #e0f1f3;
+  border-radius: 20px;
+  padding: 30px;
+  position: relative;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  margin-bottom: 30px;
+}
+main.wrapper .activities-section.activity-detail .place {
+  font-weight: 300;
+}
+main.wrapper .activities-section.activity-detail .singup-btn {
+  background-color: transparent;
+  border-radius: 5px;
+  border: #2786a3 2px solid;
+  padding: 7px 10px;
+  color: #2786a3;
+  font-family: "Raleway";
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+main.wrapper .activities-section.activity-detail .singup-btn:hover {
+  background-color: #2786a3;
+  color: white;
+  cursor: pointer;
+}
+@media (max-width: 767px) {
+  main.wrapper .activities-section {
+    top: 40px;
+  }
+}
+main.wrapper .profile-field {
+  display: flex;
+  row-gap: 20px;
+  column-gap: 5px;
+  font-weight: 300;
+}
+main.wrapper .profile-field:not(:last-child) {
+  margin-bottom: 5px;
+}
+main.wrapper .profile-field p {
+  margin: 0;
+  font-weight: 500;
+}
+main.wrapper .public-profile {
+  display: none;
+  z-index: 80000;
+  position: absolute;
+  background-color: white;
+  top: 34px;
+  padding: 20px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1411764706);
+}
+main.wrapper .user-profile:hover .public-profile {
+  display: block;
+}
