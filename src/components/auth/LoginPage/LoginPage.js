@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import InputSubmit from "../../common/InputSubmit";
 import InputStandar from "../../common/InputStandar";
 import { useState } from "react";
-
+import { Link } from "react-router-dom";
 
 const LoginPage = () => {
   const { t } = useTranslation("global");
@@ -48,15 +48,17 @@ const handleInputPassword = e =>{
                       />
                                                         
                                   <InputSubmit
-                        label={t("login.register")}
+                        label={t("login.send")}
                         className={'submit-btn'}
                       />                        
             </form>   
 
 
         <section className="link-to-registro">
-            <p>
-Si aún no tienes una cuenta en konnect no esperes más y <a href="./register.html">registrate</a>. </p>
+              <p>
+              Si aún no tienes una cuenta en konnect no esperes más y 
+              <Link to="/register"> registrate</Link>
+              .</p>
         </section>
 </Page>
 

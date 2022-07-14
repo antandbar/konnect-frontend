@@ -5,11 +5,13 @@ import NotFoundPage from './NotFoundPage';
 import Layout from '../layout/Layout';
 import ProfilePage from '../profile/ProfilePage';
 import NewActivity from '../newActivity/NewActivityPage';
+import NewUser from '../newUser/NewUser';
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
+      <Route path="/register" element={<NewUser/>} />
       <Route path="/login" element={<LoginPage />} />
         <Route index element={<NewActivity/>} />
         <Route path='/myaccount' element={<ProfilePage />} />

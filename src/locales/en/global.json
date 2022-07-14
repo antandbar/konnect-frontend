@@ -23,7 +23,23 @@
     "subtitle":"Access and start making plans",
     "email": "Email",
     "password": "Password",
-    "register": "Register"
+    "send": "Login"
+  },
+  "new-user":{
+    "title":"Register",
+    "subtitle":"What are you waiting for to join Konnect?",
+    "group-one-title":"Let's start!",
+    "username":"Choose a nickname",
+    "email":"Your email",
+    "password":"Choose a password",
+    "group-two-title":"Tell us a little bit more about you",
+    "name":"Name",
+    "date":"Birthdate",
+    "gender":"Gender",
+    "location":"Location",
+    "group-three-title":"Now it's your turn to introduce yourself!",
+    "bio":"Write a small bio so other users can know you more",
+    "register-btn":"Register"
   },
   "create-activity": {
     "title": "Create a new activity",

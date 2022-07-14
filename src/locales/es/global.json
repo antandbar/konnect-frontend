@@ -23,7 +23,23 @@
     "subtitle":"Accede y empieza a hacer planes",
     "email": "Email",
     "password": "Contraseña",
-    "register": "Regístrate"
+    "send": "Iniciar sesión"
+  },
+  "new-user":{
+    "title":"Registro",
+    "subtitle":"¿A qué esperas para unirte a Konnect?",
+    "group-one-title":"¡Empecemos!",
+    "username":"Elige un nombre de usuario",
+    "email":"Introduce tu email",
+    "password":"Introduce una contraseña",
+    "group-two-title":"Cuentanos un poco más sobre ti",
+    "name":"Tu nombre",
+    "date":"¿Cual es tu fecha de nacimiento?",
+    "gender":"¿Con qué género te identificas?",
+    "location":"Selecciona dónde te encuentras",
+    "group-three-title":"¡Es hora de que te presentes!",
+    "bio":"Escribe una pequeña bio para que otros usuarios puedan conocerte",
+    "register-btn":"Registrate"
   },
   "create-activity": {
     "title": "Crear una nueva actividad",

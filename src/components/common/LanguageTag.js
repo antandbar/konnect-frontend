@@ -1,5 +1,4 @@
 import React from "react";
-import classNames from "classnames";
 import {useTranslation} from 'react-i18next';
 
 function LanguageTag({...props}){
@@ -10,7 +9,7 @@ function LanguageTag({...props}){
 
     return(
        <span 
-       className={(language == pageLanguage) ? "active" : ""}
+       className={(language === pageLanguage) ? "active" : ""}
        onClick={(e) => i18n.changeLanguage(language)}>{language}</span>
     );
     

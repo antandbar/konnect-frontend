@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import Page from '../layout/Page';
 import InputStandar from '../common/InputStandar';
 import Selector from '../common/Selector';
-import TextArea from '../common/TextAreaStandar';
+import TextAreaStandar from '../common/TextAreaStandar';
 import next from '../../assets/img/next.svg';
 import prev from '../../assets/img/prev.svg';
 import InputSubmit from '../common/InputSubmit';
@@ -70,7 +70,7 @@ const NewActivity = () => {
             required
           />
 
-          <TextArea
+          <TextAreaStandar
             onChange={handleInputDescribe}
             label={t("create-activity.detail")}
             value={describe}
