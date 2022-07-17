@@ -1,6 +1,6 @@
-const InputSubmit = ({ className, label }) => {
+const InputSubmit = ({ className, label, disabled }) => {
     return (
-        <input className={className} defaultValue={label} />
+        <input type="submit" className={className} defaultValue={label} disabled={disabled}/>
     );
   };
   

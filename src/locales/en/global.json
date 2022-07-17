@@ -41,6 +41,11 @@
     "bio":"Write a small bio so other users can know you more",
     "register-btn":"Register"
   },
+  "activities-listing":{
+    "title":"Activities",
+    "subtitle":"Choose and activity y SIGN UP!",
+    "signedup":"people registered"
+  },
   "create-activity": {
     "title": "Create a new activity",
     "subtitle": "So people can join your plan",

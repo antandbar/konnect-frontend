@@ -1,4 +1,6 @@
 {
+  "signedup_one":"persona apuntada",
+  "signedup_other":"personas apuntadas",
   "header": {
     "activities": "Actividades",
     "my-plans": "Mis planes",
@@ -40,6 +42,10 @@
     "group-three-title":"¡Es hora de que te presentes!",
     "bio":"Escribe una pequeña bio para que otros usuarios puedan conocerte",
     "register-btn":"Registrate"
+  },
+  "activities-listing":{
+    "title":"Actividades",
+    "subtitle":"Elige una actividad y ¡APUNTATE!"
   },
   "create-activity": {
     "title": "Crear una nueva actividad",

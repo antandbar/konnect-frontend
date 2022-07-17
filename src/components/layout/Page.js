@@ -1,13 +1,10 @@
 import React, { Fragment } from 'react';
-import Title from '../common/Title';
+import PageHeading from '../common/PageHeading';
 
 function Page({ title, subtitle, pageClass, children }) {
   return (
     <Fragment>
-      <section className="page-heading">
-        <Title title={title}></Title>
-        {subtitle && <p className="page-subtitle">{subtitle}</p>}
-      </section>
+        {title && <PageHeading title={title} subtitle={subtitle}></PageHeading>}
       <section className={pageClass}>{children}</section>
     </Fragment>
   );

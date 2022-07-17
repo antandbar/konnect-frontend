@@ -5,6 +5,8 @@ const Selector = ({
   handleSelector,
   ...props
 }) => {
+
+
   return (
     <div className={className}>
       <label className="multiselector-label">
@@ -16,11 +18,11 @@ const Selector = ({
           className="multiselector-select"
           {...props}
         >
-          {/* recibe los datos de manera dinámica */}
           {tags.map(tag => (
-            <option key={tag} value={tag}>
-              {tag}
-            </option>
+            <option key={tag.id} value={tag.id}>
+            {tag.name}
+        </option>
+            
           ))}
         </select>
       </div>

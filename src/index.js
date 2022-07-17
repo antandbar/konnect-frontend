@@ -10,7 +10,9 @@ import globalEn from './locales/en/global.json';
 i18next.init({
   interpolation: { escapeValue: false },
   lng: 'es',
-  resources: { en: { global: globalEn }, es: { global: globalEs } }
+  resources: {
+    en: { global: globalEn },
+    es: { global: globalEs } }
 });
 
 ReactDOM.render(

@@ -22,7 +22,7 @@ function Header({ className }) {
           <ul className="main-menu">
           <li className='menu-item actividades'>
               <NavLink
-                to="/activities/activities"
+                to="/activities"
                 className={classNames(
                   ({ isActive }) => (isActive ? 'active' : ''))}>
                       <span className="menu-title">{t("header.activities")}</span>
@@ -46,7 +46,7 @@ function Header({ className }) {
           </li>
           <li className="menu-item new-activity menu-btn">
           <NavLink
-            to="/"
+            to="/activities/new"
             className={classNames(
               ({ isActive }) => (isActive ? 'active' : ''))}>
                   <span className="menu-title">{t("header.create-activity")}</span>

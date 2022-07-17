@@ -180,7 +180,6 @@ main.wrapper{
     width: 80%;
     max-width: 1200px;
     margin: auto;
-    padding-top: 40px;
     position: relative;
 
     .page-heading{
@@ -290,6 +289,11 @@ main.wrapper{
             display: block;
             text-align: center;
             cursor: pointer;
+
+            &:disabled{
+                background-color: grey;
+                cursor: not-allowed;
+            }
         }
 
         .formfield{

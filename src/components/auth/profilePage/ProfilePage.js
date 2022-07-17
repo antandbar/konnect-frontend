@@ -1,6 +1,6 @@
-import Page from '../layout/Page';
-import InputStandar from '../common/InputStandar';
-import TextArea from '../common/TextAreaStandar';
+import Page from '../../layout/Page';
+import InputStandar from '../../common/InputStandar';
+import TextArea from '../../common/TextAreaStandar';
 import { useTranslation } from 'react-i18next';
 
 
