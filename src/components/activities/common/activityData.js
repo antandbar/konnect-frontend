@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import dateIcon from "../../../assets/img/calendar.svg";
 import locationIcon from "../../../assets/img/place.svg";
+import userIcon from "../../../assets/img/user-buble.svg";
 
 
 
@@ -15,9 +16,12 @@ const useIcon = (type) => {
             case 'location':
                 setTypeIcon(locationIcon)
                 break;
+            case 'user':
+                setTypeIcon(userIcon)
+                break;
         }
 
-    },[])
+    },[type])
   
     return typeIcon;
 }

@@ -7,7 +7,6 @@ import TextAreaStandar from '../../common/TextAreaStandar';
 import InputSubmit from '../../common/InputSubmit';
 import { createActivity, getCategories, getLocations } from '../service';
 import { useNavigate } from 'react-router-dom';
-import moment from 'moment';
 import FormControls from '../../common/FormControls';
 import FormGroup from '../../common/FormGroup';
 
@@ -18,7 +17,9 @@ const useCategories = () => {
   useEffect(() => {
     getCategories().then(categories => {
         const results =  categories.results;
-        const categoryArr = results.map((category) => category);
+        const categoryArr = results.map((category) => {
+          return normalizeKey(category, 'categoryName');
+        });
       setCategories(categoryArr);
   })
   },[])
@@ -30,7 +31,9 @@ const useLocation = () => {
   useEffect(() => {
     getLocations().then(locations => {
         const results =  locations.results;
-        const locationArr = results.map((locations) => locations);
+        const locationArr = results.map((locations) =>{ 
+        return normalizeKey(locations, 'location');
+        });
         setlocations(locationArr);
   })
   },[])
@@ -38,24 +41,30 @@ const useLocation = () => {
 };
 
 
+const normalizeKey = (obj, oldKey) => {
+  obj['name'] = obj[oldKey];
+  delete obj[oldKey];
+  return obj;
+}
+
 
 const NewActivity = () => {
   
   const { t } = useTranslation("global");
   const navigate = useNavigate();
-  const [error, setError] = useState(false);
 
-  //const categories = useCategories();
-  //const locations = useLocation();
-  
+  const categories = useCategories();
+  const locations = useLocation();
+
+
 
   const [info, setInfo] = useState({
     title:"",
     description:"",
-    activityDate: '',
-    locationId: 1,
+    activityDate: "",
+    locationId: "",
     place: "",
-    categoryId:1
+    categoryId: ""
   });
  
   const{title, description, activityDate, locationId, place, categoryId} = info;
@@ -69,17 +78,6 @@ const NewActivity = () => {
   };
 
 
-  const handleInputDate = e => {
-
-    const newDate = moment(new Date(e.target.value)).format('YYYY-MM-DD');
-    setInfo(info =>({
-      ...info,
-      [e.target.name]: e.target.value
-    }));
-  };
-
-  
-
   const buttonDisabled = useMemo(() => {
     return !title || !description || !activityDate || !locationId || !place || !categoryId;
   }, [title, description, activityDate, locationId, place, categoryId]);
@@ -88,16 +86,13 @@ const NewActivity = () => {
 
   const handleSubmit = async event => {
     event.preventDefault();
-
-    
  
   try {
     const createdActivity = await createActivity(info);
    navigate(`/adverts/${createdActivity.id}`);
   } catch (error) {
-    setError(error);
+    console.log(error);
   }
-
   };
 
   return (
@@ -134,15 +129,16 @@ const NewActivity = () => {
           />
 
 
-{/*
 <Selector
             tags={categories}
-            handleSelector={handleSelectorCategory}
+            handleChange={handleInput}
             label={t("create-activity.category")}
             className={'formfield'}
+            value={categoryId}
+            name="categoryId"
             required
           />
-*/}
+
         
         <FormControls
                   prevBtn={false}
@@ -157,7 +153,7 @@ const NewActivity = () => {
           >
         
           <InputStandar
-            onChange={handleInputDate}
+            onChange={handleInput}
             name="activityDate"
             label={t("create-activity.date")}
             value={activityDate}
@@ -166,15 +162,16 @@ const NewActivity = () => {
             required
           />
 
-{/* 
+
 <Selector
             tags={locations}
-            handleSelector={handleSelectorCategory}
+            handleChange={handleInput}
             label={t("create-activity.location")}
             className={'formfield'}
+            value={locationId}
+            name="locationId"
             required
           />
-           */}
 
 
           <InputStandar

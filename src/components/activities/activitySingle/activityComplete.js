@@ -1,52 +1,39 @@
-import dateIcon from "../../../assets/img/calendar.svg";
-import locationIcon from "../../../assets/img/place.svg";
-import peopleIcon from "../../../assets/img/user.svg";
 import moment from 'moment';
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import InterestBtn from "../common/interestBtn";
+import SignedUpPeople from "../common/signedupPeople";
+import ActivityData from "../common/activityData";
 
 
-    //Funcion para saber el creador de la actividad
-    
-   /* const useCreator = (id) => {
-    const [creator, setCreator] = useState();
-    useEffect(() => {
-      getCreator(id).then(creator => {
-        setCreator(creator)
-    })
-    },[])
-    return activities;
-  };
-    */
     
 
 
 
 
-const ActivityComplete = ({title, activityDate, category, description, place, location, id}) =>{
+const ActivityComplete = ({user, title, activityDate, category, description, place, location}) =>{
     
-    //Mirar el user creador de la actividad
-    //const ActivityCreator = useCreator(id);
 
     const { t } = useTranslation("global");
 
+// console.log(location);
+// console.log(location.location);
+
     return(
     <article>
-{/*   <p class="category">Exposiciones</p> 
-            <h1 class="title">Exposición de cómic: Sueños e historia</h1>
+            <InterestBtn people="5" />
+            {/* <p className="category">{category.categoryName}</p> */}
+            <h1 class="title">{title}</h1>
             <div class="row">
-            <p class="activity-data"><img class="icon"src="./assets/img/user-buble.svg"/> <a href="#" class="host">lucia_715</a></p>
-            <p class="activity-data"><img class="icon"src="./assets/img/calendar.svg"/>07/08/2022</p>
-            <p class="activity-data"><img class="icon"src="./assets/img/place.svg"/>Madrid</p>
-        </div>
-        <p class="place">Lugar <b>Caixa Forum</b></p>
-        <p class="activity-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque hendrerit eget magna ut venenatis. Curabitur sed nulla ac justo dignissim laoreet eget id libero. Nunc at magna non lacus tempor interdum. Vivamus sollicitudin justo non magna blandit posuere. Morbi accumsan est vitae elementum vestibulum. Nunc ultricies nisi sit amet massa venenatis imperdiet. Aenean elementum consequat ligula vel efficitur. Phasellus ac eros sagittis, tristique erat ut, iaculis ipsum. Morbi ullamcorper imperdiet dapibus. Nullam in libero id risus pharetra tristique eget id erat. Phasellus iaculis odio non porta accumsan. Maecenas aliquet nisl ante, a fermentum mi interdum eget.</p>
-        <div class="row ends">
-            <button class="singup-btn">¡Quiero apuntarme!</button>
-            <p class="signup"><img class="icon"src="./assets/img/user.svg"/><span>3 personas </span>apuntadas de 10</p> 
-        </div> */}
-
+                {/* <ActivityData type="user" info={user.userName}></ActivityData> */}
+                <ActivityData type="date" info={moment(activityDate).format('DD/MM/YYYY')}/>
+                {/* <ActivityData type="location" info={location.location}/> */}
+            </div>
+            <p class="place">Lugar <b>{place}</b></p>
+            <p class="activity-body">{description}</p>
+            <div class="row ends">
+                <button class="singup-btn">¡Quiero apuntarme!</button>
+                <SignedUpPeople people="1" />
+            </div> 
     </article>
 
     );

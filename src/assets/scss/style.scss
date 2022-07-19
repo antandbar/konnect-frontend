@@ -623,10 +623,13 @@ border-radius: 20px;
 padding: 30px;
 position: relative;
 margin: auto;
-display: flex;
-flex-direction: column;
-row-gap: 10px;
-margin-bottom: 30px;
+
+
+        & > article{
+            display: flex;
+            flex-direction: column;
+            row-gap: 10px;
+        }
 
         .place{
             font-weight: 300;

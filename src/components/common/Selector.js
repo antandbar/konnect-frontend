@@ -1,10 +1,16 @@
+import { useTranslation } from "react-i18next";
+
 const Selector = ({
   className,
   label,
   tags,
-  handleSelector,
+  handleChange,
+  type,
   ...props
 }) => {
+
+
+  const { t } = useTranslation("global");
 
 
   return (
@@ -14,10 +20,13 @@ const Selector = ({
       </label>
       <div className='select-wrapper'>
         <select
-          onChange={handleSelector}
+          onChange={handleChange}
           className="multiselector-select"
           {...props}
         >
+          <option defaultValue="true" value="">
+          {t("selector.elige")}
+          </option>
           {tags.map(tag => (
             <option key={tag.id} value={tag.id}>
             {tag.name}
