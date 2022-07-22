@@ -17,6 +17,16 @@ export const getActivities = () => {
     return client.get(url);
 }
 
+export const getSignedPeople = (activityId) => {
+    const url = `${advertsBaseUrl}/count/signedup/${activityId}`;
+    return client.get(url);
+}
+
+export const getInterestedPeople = (activityId) => {
+    const url = `${advertsBaseUrl}/count/interested/${activityId}`;
+    return client.get(url);
+}
+
 
 export const getActivity = (activityId) => {
     const url = `${advertsBaseUrl}/activities/${activityId}`;
@@ -43,7 +53,3 @@ export const getCreator = (activity) => {
 
   //Recibo objeto con result > un array -> un objeto > user . id
 
-  export const getUserDetail = (user) => {
-    const url = `${advertsBaseUrl}/user/${user}`;
-    return client.get(url);
-  };

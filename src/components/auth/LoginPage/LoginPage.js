@@ -2,54 +2,90 @@ import Page from "../../layout/Page";
 import { useTranslation } from "react-i18next";
 import InputSubmit from "../../common/InputSubmit";
 import InputStandar from "../../common/InputStandar";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useMemo, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { login } from "../service";
+import T from 'prop-types';
 
-const LoginPage = () => {
+const LoginPage = ({onLogin}) => {
   const { t } = useTranslation("global");
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [credentials, setCredentials] = useState({
+    'email': '',
+    'password': '',
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-const handleInputEmail = e =>{
-  setEmail(e.target.value);
+  const { email, password } = credentials;
 
-}
 
-const handleInputPassword = e =>{
-  setPassword(e.target.value);
+  const handleChange = (event) => {
+    setCredentials(credentials => ({
+      ...credentials,
+      [event.target.name]:
+      event.target.value,
+    }));
+  }; 
 
-}
+
+  const resetError = () => setError(null);
+
+
+const buttonDisabled = useMemo(() => {
+  return !email || !password || isLoading;
+}, [email, password, isLoading]);
+
+
+const handleSubmit = async event => {
+  event.preventDefault();
+  try {
+    resetError();
+    setIsLoading(true);
+    await login(credentials);
+    setIsLoading(false);
+    onLogin();
+    const from = location.state?.from?.pathname || '/';
+    navigate(from, { replace: true });
+  } catch (error) {
+    setError(error);
+    setIsLoading(false);
+  }
+};
 
 
   return (
 
-
     <Page title={t("login.title")}
     pageClass="form login-form"
-
     >
-                  <form>
-                                        <InputStandar
-                        onChange={handleInputEmail}
+                  <form onSubmit={handleSubmit}>
+                        <InputStandar
+                        onChange={handleChange}
                         label={t("login.email")}
+                        name="email"
                         value={email}
                         type="email"
                         className={'formfield'}
                         required
                       />
                                   <InputStandar
-                        onChange={handleInputPassword}
+                        onChange={handleChange}
                         label={t("login.password")}
                         value={password}
+                        name="password"
                         type="password"
                         className={'formfield'}
                         required
                       />
+
                                                         
                                   <InputSubmit
                         label={t("login.send")}
                         className={'submit-btn'}
+                        disabled={buttonDisabled}
                       />                        
             </form>   
 
@@ -65,5 +101,11 @@ const handleInputPassword = e =>{
    
   );
 };
+
+
+LoginPage.propTypes = {
+  onLogin: T.func,
+};
+
 
 export default LoginPage;

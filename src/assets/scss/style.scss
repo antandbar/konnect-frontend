@@ -80,6 +80,7 @@ header{
 
         .menu-title{
             font-size: 1.2rem;
+            margin: 0;
         }
 
         .login{
@@ -91,6 +92,7 @@ header{
             padding: 3px 15px;
             border-radius: 25px;
             justify-content:flex-start;
+            cursor: pointer;
         }
     }
 
@@ -445,7 +447,7 @@ main.wrapper{
         font-size: .9rem;
     }
 
-    input[type="checkbox"]{
+    input[type="radio"]{
         display: none;
 
         &+span{
@@ -692,9 +694,16 @@ row-gap: 20px;
     box-shadow: 0 0 10px 0 #00000024;
    }
 
-   .user-profile:hover .public-profile{
-    display: block;
+   .user-profile{
+    cursor: pointer;
+
+            &:hover+.public-profile{
+        display: block;
+       }
+
    }
+
+   
 
 
 }

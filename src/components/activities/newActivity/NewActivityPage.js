@@ -6,46 +6,13 @@ import Selector from '../../common/Selector';
 import TextAreaStandar from '../../common/TextAreaStandar';
 import InputSubmit from '../../common/InputSubmit';
 import { createActivity, getCategories, getLocations } from '../service';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import FormControls from '../../common/FormControls';
 import FormGroup from '../../common/FormGroup';
+import { useCategories } from '../../utility/getData';
 
 
 
-const useCategories = () => {
-  const [categories, setCategories] = useState([]);
-  useEffect(() => {
-    getCategories().then(categories => {
-        const results =  categories.results;
-        const categoryArr = results.map((category) => {
-          return normalizeKey(category, 'categoryName');
-        });
-      setCategories(categoryArr);
-  })
-  },[])
-  return categories;
-};
-
-const useLocation = () => {
-  const [locations, setlocations] = useState([]);
-  useEffect(() => {
-    getLocations().then(locations => {
-        const results =  locations.results;
-        const locationArr = results.map((locations) =>{ 
-        return normalizeKey(locations, 'location');
-        });
-        setlocations(locationArr);
-  })
-  },[])
-  return locations;
-};
-
-
-const normalizeKey = (obj, oldKey) => {
-  obj['name'] = obj[oldKey];
-  delete obj[oldKey];
-  return obj;
-}
 
 
 const NewActivity = () => {
@@ -89,6 +56,7 @@ const NewActivity = () => {
  
   try {
     const createdActivity = await createActivity(info);
+    // const createRelation = await creatorRelation(createdActivity.id, userId);
    navigate(`/adverts/${createdActivity.id}`);
   } catch (error) {
     console.log(error);
@@ -129,7 +97,7 @@ const NewActivity = () => {
           />
 
 
-<Selector
+{/* <Selector
             tags={categories}
             handleChange={handleInput}
             label={t("create-activity.category")}
@@ -137,7 +105,7 @@ const NewActivity = () => {
             value={categoryId}
             name="categoryId"
             required
-          />
+          /> */}
 
         
         <FormControls
@@ -163,7 +131,7 @@ const NewActivity = () => {
           />
 
 
-<Selector
+{/* <Selector
             tags={locations}
             handleChange={handleInput}
             label={t("create-activity.location")}
@@ -171,7 +139,7 @@ const NewActivity = () => {
             value={locationId}
             name="locationId"
             required
-          />
+          /> */}
 
 
           <InputStandar

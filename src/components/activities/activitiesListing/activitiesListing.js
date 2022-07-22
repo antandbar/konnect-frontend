@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Page from "../../layout/Page";
 import ActivitySimple from "../activitySingle/activitySimple";
+import Filters from "../common/filters";
 import { getActivities } from "../service";
 
 
@@ -35,7 +36,7 @@ const useActivities = () => {
         subtitle={t("activities-listing.subtitle")}
         pageClass="listing-container"
       >    
-      {/* Aqui van los filtros */}
+<Filters />      
         {
             allActivities.length
             ?(

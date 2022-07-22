@@ -27,14 +27,31 @@ const useIcon = (type) => {
 }
 
 
+const useClass = (type) => {
+    const [newClass, setNewClass] = useState();
+    useEffect(() => {
+    if(type == "user"){
+        setNewClass("user-profile activity-data");
+       }else{
+        setNewClass("activity-data");
+       }
+    },[type])
+  
+    return newClass;
+}
+
+
 
 const ActivityData = ({ type, info }) => {
     
     const icon = useIcon(type);
     
+    const newClass = useClass(type);
+    
+
     return (
-        <p className="activity-data">
-            <img className="icon"src={icon}/>
+        <p className={newClass}>
+            <img className="icon" src={icon}/>
             {info}
         </p>
 

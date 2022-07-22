@@ -2,92 +2,105 @@ import Page from '../../layout/Page';
 import InputStandar from '../../common/InputStandar';
 import TextArea from '../../common/TextAreaStandar';
 import { useTranslation } from 'react-i18next';
+import { useEffect, useState } from 'react';
+import { getUserDetail } from '../service';
+import moment from 'moment';
+
+
+
+
+const useUserData = (id) =>{
+  const [user, setUser] = useState();
+  useEffect(() => {
+    getUserDetail(id).then(user => {
+      setUser(user.results[0])
+    })
+  },[])
+  return user;
+}
 
 
 const ProfilePage = () => {
   const { t } = useTranslation("global");
 
-  //RECIBIMOS LOS VALORES
-  const userName = "Username";
-  const name = "Name";
-  const email = 'example@gmail.com';
-  const password = "123456";
-  const age = '40';
-  const location = "Location";
-  const gender = "Mujer";
-  const bio = "Lorem ipsum dolor sit amet";
+  const loggedUser = "5";
 
-  
+  const userData = useUserData(loggedUser);
+
+
+
 
   return (
     <Page title={t("my-account.title")}
     pageClass="account-content form"
     >
-        <InputStandar
-          label={t("my-account.user-name")}
-          value={userName}
-          type="text"
-          className={'formfield'}
-          required
-        />
 
-        <InputStandar
-          label={t("my-account.email")}
-          type="email"
-          value={email}
-          className={'formfield'}
-          required
-        />
+    {
+    userData != undefined
+    ? (
+      <div>
+      <InputStandar
+      label={t("my-account.user-name")}
+      defaultValue={userData.userName}
+      type="text"
+      className={'formfield'}
+      readOnly
+    />
 
-        <InputStandar
-          label={t("my-account.name")}
-          value={name}
-          type="text"
-          className={'formfield'}
-          required
-        />
+    <InputStandar
+      label={t("my-account.email")}
+      type="email"
+      defaultValue={userData.email}
+      className={'formfield'}
+      readOnly
+    />
 
+    <InputStandar
+      label={t("my-account.name")}
+      defaultValue={userData.name}
+      type="text"
+      className={'formfield'}
+      readOnly
+    />
+
+
+
+<InputStandar
+      label={t("my-account.gender")}
+      defaultValue={userData.gender}
+      type="text"
+      className={'formfield'}
+      readOnly
+    />
+
+    <InputStandar
+      label={t("my-account.age")}
+      value={(moment(userData.bithDate).format('DD/MM/YYYY'))}
+      type="text"
+      className={'formfield'}
+      readOnly
+    />
+
+<InputStandar
+      label={t("my-account.location")}
+      defaultValue={userData.userLocation}
+      type="text"
+      className={'formfield'}
+      readOnly
+    />
     
-
-<InputStandar
-          label={t("my-account.password")}
-          value={password}
-          type="password"
-          className={'formfield'}
-          required
-        />
-
-<InputStandar
-          label={t("my-account.gender")}
-          value={gender}
-          type="text"
-          className={'formfield'}
-          required
-        />
-
-        <InputStandar
-          label={t("my-account.age")}
-          value={age}
-          type="number"
-          className={'formfield'}
-          required
-        />
-
-<InputStandar
-          label={t("my-account.location")}
-          value={location}
-          type="text"
-          className={'formfield'}
-          required
-        />
-        
-        <TextArea
-          label={t("my-account.bio")}
-          value={bio}
-          className={'formfield'}
-          rows={5}
-          required
-        />
+    <TextArea
+      label={t("my-account.bio")}
+      defaultValue={userData.bio}
+      className={'formfield'}
+      rows={5}
+      readOnly
+    />
+</div>
+    )
+    :(<p>No info to show</p>)}
+  
+       
 
        
     </Page>

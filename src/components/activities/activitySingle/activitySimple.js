@@ -9,16 +9,18 @@ import SignedUpPeople from "../common/signedupPeople";
 const ActivitySimple = ({title, activityDate, category, location, id}) =>{
 
 
+
+
     return(
         <article className="activities-item" key={id}>
-            <InterestBtn people="5" />
+            <InterestBtn actId={id} />
             <p className="category">{category.categoryName}</p> 
             <ActivityTitle title={title} linkId={id} />
             <div className="row">
                 <ActivityData type="date" info={moment(activityDate).format('DD/MM/YYYY')}/>
                 <ActivityData type="location" info={location.location}/>
             </div>
-            <SignedUpPeople people="1" />
+            <SignedUpPeople actId={id} />
         </article>
     );
 

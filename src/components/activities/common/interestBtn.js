@@ -1,7 +1,22 @@
+import { useEffect, useState } from "react";
+import { getInterestedPeople } from "../service";
 
 
-const InterestBtn = ({ people }) => {
+
+const useInterestedPeople = (actId) => {
+    const [people, setPeople] = useState([]);
+    useEffect(() => {
+      getInterestedPeople(actId).then(people => {
+        setPeople(people.result)
+    })
+    },[])
+    return people;
+  };
+
+const InterestBtn = ({ actId }) => {
         
+    const people = useInterestedPeople(actId);
+
     return (
         <div className="interested">
             {people}

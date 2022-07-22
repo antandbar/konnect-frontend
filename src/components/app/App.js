@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import  LoginPage from '../auth/loginPage/LoginPage';
 import Layout from '../layout/Layout';
@@ -8,21 +8,34 @@ import NewUser from '../newUser/NewUser';
 import ActivitiesPage from '../activities/activitiesListing/activitiesListing';
 import ActivityPage from '../activities/activityPage/activityPage';
 import NotFound from '../notFoundPage/notFoundPage';
+import { AuthContextProvider } from '../auth/context';
+import RequireAuth from '../auth/RequireAuth';
+import Myplans from '../activities/myPlans/myPlans';
 
-function App() {
+
+function App({ isInitiallyLogged }) {
+  const [isLogged, setIsLogged] = useState(isInitiallyLogged);
+
+  const handleLogin = () => {
+    setIsLogged(true);
+  };
+
+  const handleLogout = () => {
+    setIsLogged(false);
+  };
+
   return (
+    <AuthContextProvider value={{ isLogged, handleLogin, handleLogout }}>
     <Routes>
       <Route path="/" element={<Layout />}>
-          <Route index element={<ActivitiesPage/>}/>
-          <Route path="/register" element={<NewUser/>} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/activities">
-                <Route index element={<ActivitiesPage/>}/>
+      <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
+      <Route path="/register" element={<NewUser/>} />
+          <Route path="/activities" element={<RequireAuth><ActivitiesPage/></RequireAuth>}>
                 <Route path=":activityId" element={<ActivityPage/>} />
-                <Route path="/activities/new" element={<NewActivity/>} />
-
-            </Route>
-          <Route path='/myaccount' element={<ProfilePage />} />
+          </Route>
+          <Route path="/newactivity" element={<NewActivity/>} />
+          <Route path="/myplans" element={<RequireAuth><Myplans/></RequireAuth>}/>
+          <Route path='/myaccount' element={<RequireAuth><ProfilePage /></RequireAuth>} />
       </Route>
 
       <Route path="/404" element={<Layout />}>
@@ -30,6 +43,8 @@ function App() {
       </Route>
       <Route path="*" element={<Navigate to="/404" />} />
     </Routes>
+    </AuthContextProvider>
+
   );
 }
 
