@@ -4,7 +4,7 @@ import  LoginPage from '../auth/loginPage/LoginPage';
 import Layout from '../layout/Layout';
 import ProfilePage from '../auth/profilePage/ProfilePage';
 import NewActivity from '../activities/newActivity/NewActivityPage';
-import NewUser from '../newUser/NewUser';
+import NewUser from '../auth/newUser/NewUser';
 import ActivitiesPage from '../activities/activitiesListing/activitiesListing';
 import ActivityPage from '../activities/activityPage/activityPage';
 import NotFound from '../notFoundPage/notFoundPage';
@@ -30,10 +30,9 @@ function App({ isInitiallyLogged }) {
       <Route path="/" element={<Layout />}>
       <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
       <Route path="/register" element={<NewUser/>} />
-          <Route path="/activities" element={<RequireAuth><ActivitiesPage/></RequireAuth>}>
-                <Route path=":activityId" element={<ActivityPage/>} />
-          </Route>
-          <Route path="/newactivity" element={<NewActivity/>} />
+          <Route path="/activities" element={<RequireAuth><ActivitiesPage/></RequireAuth>} />
+          <Route path="/activities/:activityId" element={<RequireAuth><ActivityPage/></RequireAuth>} />
+          <Route path="/newactivity" element={<RequireAuth><NewActivity/></RequireAuth>} />
           <Route path="/myplans" element={<RequireAuth><Myplans/></RequireAuth>}/>
           <Route path='/myaccount' element={<RequireAuth><ProfilePage /></RequireAuth>} />
       </Route>

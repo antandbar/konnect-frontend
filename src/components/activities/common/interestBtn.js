@@ -14,12 +14,16 @@ const useInterestedPeople = (actId) => {
   };
 
 const InterestBtn = ({ actId }) => {
-        
     const people = useInterestedPeople(actId);
 
     return (
         <div className="interested">
-            {people}
+            
+           {
+            people !== undefined
+                ? people
+                : ('0')
+           } 
             <button className="interested-btn"></button>
         </div>
 

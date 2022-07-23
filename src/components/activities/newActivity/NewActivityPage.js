@@ -5,14 +5,25 @@ import InputStandar from '../../common/InputStandar';
 import Selector from '../../common/Selector';
 import TextAreaStandar from '../../common/TextAreaStandar';
 import InputSubmit from '../../common/InputSubmit';
-import { createActivity, getCategories, getLocations } from '../service';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { createActivity, createStatus, getCategories, getLocations } from '../service';
+import { useNavigate } from 'react-router-dom';
 import FormControls from '../../common/FormControls';
 import FormGroup from '../../common/FormGroup';
-import { useCategories } from '../../utility/getData';
+import { useAppLocation, useCategories } from '../../utility/getData';
+import { getLoggedUser } from '../../auth/service';
+import CategoriesCombo from '../common/categoriesCombo';
+import LocationsCombo from '../common/locationCombo';
 
 
-
+const useLoggedUserId = () =>{
+  const [user, setUser] = useState();
+  useEffect(() => {
+    getLoggedUser().then(userData => {
+    setUser(userData.userId);
+    })
+  },[])
+  return user;
+}
 
 
 const NewActivity = () => {
@@ -20,9 +31,7 @@ const NewActivity = () => {
   const { t } = useTranslation("global");
   const navigate = useNavigate();
 
-  const categories = useCategories();
-  const locations = useLocation();
-
+  const locations = useAppLocation();
 
 
   const [info, setInfo] = useState({
@@ -50,18 +59,29 @@ const NewActivity = () => {
   }, [title, description, activityDate, locationId, place, categoryId]);
 
 
+  //const loggedUserId = useLoggedUserId
 
-  const handleSubmit = async event => {
-    event.preventDefault();
+  const loggedUserId = "9";
+
+
  
-  try {
-    const createdActivity = await createActivity(info);
-    // const createRelation = await creatorRelation(createdActivity.id, userId);
-   navigate(`/adverts/${createdActivity.id}`);
-  } catch (error) {
-    console.log(error);
+  const handleSubmit =  (event) => {
+    event.preventDefault();
+
+    createActivity(info).then((createdActivity) => {
+      const data = {
+        "userId":9,
+        "activityId":createdActivity.results.id,
+        "userStatusId":1   
+       };
+      createStatus(data);
+      navigate(`/activities/${createdActivity.results.id}`);
+    }).catch((error) => {
+      console.error(error);
+    });
+
   }
-  };
+
 
   return (
     <Page
@@ -86,6 +106,7 @@ const NewActivity = () => {
             required
           />
 
+
           <TextAreaStandar
             onChange={handleInput}
             name="description"
@@ -96,16 +117,10 @@ const NewActivity = () => {
             required
           />
 
-
-{/* <Selector
-            tags={categories}
-            handleChange={handleInput}
-            label={t("create-activity.category")}
-            className={'formfield'}
-            value={categoryId}
-            name="categoryId"
-            required
-          /> */}
+<CategoriesCombo
+handleChange={handleInput}
+defaultValue={categoryId}
+/>
 
         
         <FormControls
@@ -131,15 +146,11 @@ const NewActivity = () => {
           />
 
 
-{/* <Selector
-            tags={locations}
-            handleChange={handleInput}
-            label={t("create-activity.location")}
-            className={'formfield'}
-            value={locationId}
-            name="locationId"
-            required
-          /> */}
+<LocationsCombo
+handleChange={handleInput}
+defaultValue={locationId}
+/>
+
 
 
           <InputStandar

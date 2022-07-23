@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Page from "../../layout/Page";
 import ActivitySimple from "../activitySingle/activitySimple";
-import Filters from "../common/filters";
+import EmptyList from "../common/emptyList";
 import { getActivities } from "../service";
 
 
@@ -17,11 +17,6 @@ const useActivities = () => {
   };
 
 
-  const EmptyList = () => (
-    <div>
-      <p>No hay actividades para mostrar.</p>
-    </div>
-  );
 
 
   const ActivitiesPage = () =>{
@@ -36,7 +31,6 @@ const useActivities = () => {
         subtitle={t("activities-listing.subtitle")}
         pageClass="listing-container"
       >    
-<Filters />      
         {
             allActivities.length
             ?(

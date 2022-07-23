@@ -3,7 +3,7 @@ import InputStandar from '../../common/InputStandar';
 import TextArea from '../../common/TextAreaStandar';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
-import { getUserDetail } from '../service';
+import { getLoggedUser, getUserDetail } from '../service';
 import moment from 'moment';
 
 
@@ -12,22 +12,21 @@ import moment from 'moment';
 const useUserData = (id) =>{
   const [user, setUser] = useState();
   useEffect(() => {
-    getUserDetail(id).then(user => {
-      setUser(user.results[0])
+    getLoggedUser().then(userData => {
+      getUserDetail(userData.result.userId).then(user => {
+        setUser(user.results[0])
+      })
     })
   },[])
   return user;
 }
 
 
+
 const ProfilePage = () => {
   const { t } = useTranslation("global");
 
-  const loggedUser = "5";
-
-  const userData = useUserData(loggedUser);
-
-
+  const userData = useUserData();
 
 
   return (

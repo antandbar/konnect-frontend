@@ -8,6 +8,10 @@
     "create-activity": "Crear actividad",
     "login":"Login"
   },
+  "not-found":{
+    "title":"Página no encontrada",
+    "subtitle":"Oops! Parece que te has perdido"
+  },
   "my-account": {
     "title": "Mi cuenta",
     "user-name": "Nombre de usuario",

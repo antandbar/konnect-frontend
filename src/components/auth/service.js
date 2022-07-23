@@ -1,15 +1,15 @@
 import client, { removeAuthorizationHeader, setAuthorizationHeader } from "../api/client";
 import storage from '../../utils/storage';
 
-const advertsBaseUrl = '/apiv1';
+const activitiesBaseUrl = '/apiv1';
 
 export const getUserDetail = (user) => {
-  const url = `${advertsBaseUrl}/user/${user}`;
+  const url = `${activitiesBaseUrl}/user/${user}`;
   return client.get(url);
 };
 
 export const login = (credentials) => {    
-  const url = `${advertsBaseUrl}/login`;
+  const url = `${activitiesBaseUrl}/login`;
 
   return client.post(url, credentials).then(({ ...accessToken }) => {
       setAuthorizationHeader(accessToken.token);
@@ -23,4 +23,15 @@ export const login = (credentials) => {
       removeAuthorizationHeader();
       storage.remove('auth');
     });
+  };
+
+
+  export const getLoggedUser = () => {
+    const url = `${activitiesBaseUrl}/credential`;
+    return client.get(url);
+  }
+
+  export const createUser = (user) => {
+    const url = `${activitiesBaseUrl}/user`;
+    return client.post(url, user);
   };

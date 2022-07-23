@@ -6,6 +6,10 @@
     "create-activity": "Create Activity",
     "login":"Login"
   },
+  "not-found":{
+    "title":"Page not found",
+    "subtitle":"Oops! It seems that you have lost"
+  },
   "my-account": {
     "title": "My Account",
     "user-name": "User Name",

@@ -4,18 +4,28 @@ import InterestBtn from "../common/interestBtn";
 import SignedUpPeople from "../common/signedupPeople";
 import ActivityData from "../common/activityData";
 import { useEffect, useState } from 'react';
-import UserPopup from '../common/userPopup';
+import { getCreator } from '../service';
 
 
+const useCreator = (id) =>{
+    const [creator, setCreator] = useState();
+    useEffect(() => {
+      getCreator(id).then(creator => {
+        setCreator(creator.results[0].user.userName)
+      })
+    },[id])
+    return creator;
+  }
+
+
+
+const ActivityComplete = ({actId, title, activityDate, category, description, place, location}) =>{
     
-
-
-
-
-const ActivityComplete = ({user, title, activityDate, category, description, place, location}) =>{
-    
-
     const { t } = useTranslation("global");
+
+    const activityCreator = useCreator(actId);
+
+console.log(activityCreator);
 
     const [newLocation, setNewLocation] = useState();
         useEffect(() => {
@@ -31,21 +41,15 @@ const ActivityComplete = ({user, title, activityDate, category, description, pla
               }
             },[category])  
 
-            const [newUser, setNewUser] = useState();
-            useEffect(() => {
-                if(user !== undefined){
-                    setNewUser(user.userName);         
-                }
-              },[user])  
+
 
               return(
     <article>
-            <InterestBtn people="5" />
+            <InterestBtn actId={actId} />
             <p className="category">{newCategory}</p>
             <h1 className="title">{title}</h1>
             <div className="row">
-                <ActivityData type="user" info={newUser}></ActivityData>
-                <UserPopup>{user}</UserPopup>
+                <ActivityData type="user" info={activityCreator}></ActivityData>
                 <ActivityData type="date" info={moment(activityDate).format('DD/MM/YYYY')}/>
                 <ActivityData type="location" info={newLocation}/>
             </div>
@@ -53,7 +57,7 @@ const ActivityComplete = ({user, title, activityDate, category, description, pla
             <p className="activity-body">{description}</p>
             <div className="row ends">
                 <button className="singup-btn">¡Quiero apuntarme!</button>
-                <SignedUpPeople people="1" />
+                <SignedUpPeople actId={actId} />
             </div> 
     </article>
 

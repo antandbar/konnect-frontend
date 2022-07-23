@@ -15,7 +15,7 @@ export const useCategories = () => {
     return categories;
   };
   
-  export const useLocation = () => {
+  export const useAppLocation = () => {
     const [locations, setlocations] = useState([]);
     useEffect(() => {
       getLocations().then(locations => {

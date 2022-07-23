@@ -1,11 +1,8 @@
 import { useTranslation } from "react-i18next";
 
 const Selector = ({
-  className,
-  label,
   tags,
   handleChange,
-  type,
   ...props
 }) => {
 
@@ -14,10 +11,6 @@ const Selector = ({
 
 
   return (
-    <div className={className}>
-      <label className="multiselector-label">
-        <span>{label}</span>
-      </label>
       <div className='select-wrapper'>
         <select
           onChange={handleChange}
@@ -35,7 +28,7 @@ const Selector = ({
           ))}
         </select>
       </div>
-    </div>
+    
   );
 };
 

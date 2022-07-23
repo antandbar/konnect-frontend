@@ -7,11 +7,10 @@ const NotFound = () => {
 
 
   return(
-<Page title={t("new-user.title")}
-      subtitle={t("new-user.subtitle")}
+<Page title={t("not-found.title")}
+      subtitle={t("not-found.subtitle")}
     pageClass="form register-form"
     >
-  Page not found (por hacer)
       </Page>
         )
   
