@@ -4,7 +4,7 @@ import InputSubmit from "../../common/InputSubmit";
 import InputStandar from "../../common/InputStandar";
 import { useMemo, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { login } from "../service";
+import { getLoggedUser, login } from "../service";
 import T from 'prop-types';
 
 const LoginPage = ({onLogin}) => {
@@ -46,9 +46,13 @@ const handleSubmit = async event => {
     setIsLoading(true);
     await login(credentials);
     setIsLoading(false);
-    onLogin();
-    const from = location.state?.from?.pathname || '/';
+    getLoggedUser().then((userId) => {
+       onLogin(userId);
+       const from = location.state?.from?.pathname || '/';
     navigate(from, { replace: true });
+    })
+
+    
   } catch (error) {
     setError(error);
     setIsLoading(false);
@@ -92,8 +96,8 @@ const handleSubmit = async event => {
 
         <section className="link-to-registro">
               <p>
-              Si aún no tienes una cuenta en konnect no esperes más y 
-              <Link to="/register"> registrate</Link>
+              {t("login.register")}
+              <Link to="/register"> {t("login.register-link")}</Link>
               .</p>
         </section>
 </Page>

@@ -12,6 +12,8 @@ import storage from './utils/storage';
 
 
 const accessToken = storage.get('auth');
+const logguedUser = storage.get('user');
+
 setAuthorizationHeader(accessToken);
 
 
@@ -29,7 +31,8 @@ ReactDOM.render(
   <React.StrictMode>
     <I18nextProvider i18n={i18next}>
       <Router>
-        <App isInitiallyLogged={!!accessToken} />
+        <App isInitiallyLogged={!!accessToken} initialLoggedUser={({accessToken}) ? logguedUser : ''}
+        />
       </Router>
     </I18nextProvider>
   </React.StrictMode>,

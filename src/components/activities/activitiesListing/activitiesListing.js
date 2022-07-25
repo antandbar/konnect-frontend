@@ -24,7 +24,6 @@ const useActivities = () => {
 
     const allActivities = useActivities();
 
-
     return (
         <Page
         title={t("activities-listing.title")}

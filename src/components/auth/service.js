@@ -22,13 +22,18 @@ export const login = (credentials) => {
     return Promise.resolve().then(() => {
       removeAuthorizationHeader();
       storage.remove('auth');
+      storage.remove('user');
+
     });
   };
 
 
   export const getLoggedUser = () => {
     const url = `${activitiesBaseUrl}/credential`;
-    return client.get(url);
+    return client.get(url).then((results) =>{
+      storage.set('user', results.result.userId );
+      return results.result.userId;
+    });
   }
 
   export const createUser = (user) => {

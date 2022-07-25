@@ -181,8 +181,10 @@ header{
 main.wrapper{
     width: 80%;
     max-width: 1200px;
-    margin: auto;
+    margin: 30px auto 0;
     position: relative;
+
+
 
     .page-heading{
         font-family: $title-font;
@@ -206,6 +208,8 @@ main.wrapper{
                 margin-bottom: 0;
             }
     }
+
+
 
     /*FORMS*/
     .form{
@@ -506,13 +510,20 @@ cursor: pointer;
     }
 
    .activities-section{
+
+    .emptylist {
+        margin-top: 40px;        
+                   p{
+                     text-align: center;
+                    }
+
+        }
+
         &.activities-listing {
             width: 75%;
             display: inline-block;
 
-            article{
-            margin-bottom: 30px;
-            }
+           
         }
 
         &.activities-plans{
@@ -529,6 +540,7 @@ cursor: pointer;
         display: flex;
         flex-direction: column;
         row-gap: 10px;
+        margin-bottom: 30px;
     }
         .row{
             display: flex;
@@ -617,7 +629,29 @@ align-items: center;
             }
 
         }
-    
+        .singup-btn{
+            background-color: transparent;
+            border-radius: 5px;
+            border: $main-dark 2px solid;
+            padding: 7px 10px;
+            color: $main-dark;
+            font-family: $main-font;
+            font-size: 1.2rem;
+            font-weight: 500;
+
+            &:hover{
+                background-color: black;
+                color: white;
+                border-color: black;
+                cursor: pointer;
+            }
+
+            &.active{
+                background-color: $main-dark;
+                color: white;
+            }
+
+        }
 
     &.activity-detail{
 background-color: $lighter-main-color;
@@ -637,22 +671,7 @@ margin: auto;
             font-weight: 300;
         }
 
-        .singup-btn{
-            background-color: transparent;
-            border-radius: 5px;
-            border: $main-dark 2px solid;
-            padding: 7px 10px;
-            color: $main-dark;
-            font-family: $main-font;
-            font-size: 1.2rem;
-            font-weight: 500;
-
-            &:hover{
-                background-color: $main-dark;
-                color: white;
-                cursor: pointer;
-            }
-        }
+        
 
 
 }

@@ -1,10 +1,11 @@
 import moment from 'moment';
 import { useTranslation } from "react-i18next";
-import InterestBtn from "../common/interestBtn";
-import SignedUpPeople from "../common/signedupPeople";
+import InterestElem from "../common/interestElem";
 import ActivityData from "../common/activityData";
 import { useEffect, useState } from 'react';
 import { getCreator } from '../service';
+import { useAuth } from "../../auth/context";
+import SignUp from '../common/singnUp';
 
 
 const useCreator = (id) =>{
@@ -24,8 +25,7 @@ const ActivityComplete = ({actId, title, activityDate, category, description, pl
     const { t } = useTranslation("global");
 
     const activityCreator = useCreator(actId);
-
-console.log(activityCreator);
+    const { loggedUser } = useAuth();
 
     const [newLocation, setNewLocation] = useState();
         useEffect(() => {
@@ -45,7 +45,7 @@ console.log(activityCreator);
 
               return(
     <article>
-            <InterestBtn actId={actId} />
+            <InterestElem actId={actId} loggedUser={loggedUser}/>
             <p className="category">{newCategory}</p>
             <h1 className="title">{title}</h1>
             <div className="row">
@@ -53,12 +53,9 @@ console.log(activityCreator);
                 <ActivityData type="date" info={moment(activityDate).format('DD/MM/YYYY')}/>
                 <ActivityData type="location" info={newLocation}/>
             </div>
-            <p className="place">Lugar <b>{place}</b></p>
+            <p className="place">{t("activity.place")} <b>{place}</b></p>
             <p className="activity-body">{description}</p>
-            <div className="row ends">
-                <button className="singup-btn">¡Quiero apuntarme!</button>
-                <SignedUpPeople actId={actId} />
-            </div> 
+                <SignUp actId={actId} loggedUser={loggedUser}/>
     </article>
 
     );

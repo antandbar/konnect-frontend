@@ -5,18 +5,18 @@ import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import { getLoggedUser, getUserDetail } from '../service';
 import moment from 'moment';
+import { useAuth } from '../context';
 
 
 
 
 const useUserData = (id) =>{
   const [user, setUser] = useState();
+
   useEffect(() => {
-    getLoggedUser().then(userData => {
-      getUserDetail(userData.result.userId).then(user => {
+      getUserDetail(id).then(user => {
         setUser(user.results[0])
       })
-    })
   },[])
   return user;
 }
@@ -26,7 +26,10 @@ const useUserData = (id) =>{
 const ProfilePage = () => {
   const { t } = useTranslation("global");
 
-  const userData = useUserData();
+  const { loggedUser} = useAuth();
+
+
+  const userData = useUserData(loggedUser);
 
 
   return (

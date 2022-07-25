@@ -50,3 +50,13 @@ export const createStatus =(data) =>{
     const url = `${activitiesBaseUrl}/Tracking`;
     return client.post(url, data);
 }
+
+export const deleteStatus =(trackId) =>{
+    const url = `${activitiesBaseUrl}/Tracking/${trackId}`;
+    return client.delete(url);
+}
+
+export const getActivitiesRelation = (status, user, actId) =>{
+    const url = `${activitiesBaseUrl}/Tracking?userStatusId=${status}&userId=${user}&activityId=${actId}`;
+    return client.get(url);
+}

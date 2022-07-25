@@ -13,11 +13,13 @@ import RequireAuth from '../auth/RequireAuth';
 import Myplans from '../activities/myPlans/myPlans';
 
 
-function App({ isInitiallyLogged }) {
+function App({ isInitiallyLogged, initialLoggedUser }) {
   const [isLogged, setIsLogged] = useState(isInitiallyLogged);
+   const [loggedUser, setloggedUser] = useState(initialLoggedUser);
 
-  const handleLogin = () => {
+  const handleLogin = (userId) => {
     setIsLogged(true);
+    setloggedUser(userId);
   };
 
   const handleLogout = () => {
@@ -25,9 +27,10 @@ function App({ isInitiallyLogged }) {
   };
 
   return (
-    <AuthContextProvider value={{ isLogged, handleLogin, handleLogout }}>
+    <AuthContextProvider value={{ isLogged, handleLogin, handleLogout, loggedUser }}>
     <Routes>
       <Route path="/" element={<Layout />}>
+      <Route index element={<RequireAuth><ActivitiesPage/></RequireAuth>} />
       <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
       <Route path="/register" element={<NewUser/>} />
           <Route path="/activities" element={<RequireAuth><ActivitiesPage/></RequireAuth>} />
@@ -41,6 +44,7 @@ function App({ isInitiallyLogged }) {
         <Route index element={<NotFound />} />
       </Route>
       <Route path="*" element={<Navigate to="/404" />} />
+
     </Routes>
     </AuthContextProvider>
 

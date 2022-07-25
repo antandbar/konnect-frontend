@@ -12,6 +12,15 @@
     "title":"Página no encontrada",
     "subtitle":"Oops! Parece que te has perdido"
   },
+  "my-plans": {
+    "title": "Mis planes",
+    "fav":"Guardados",
+    "signedup":"Apuntados",
+    "created":"Creados"
+  },
+  "empty":{
+    "text": "No hay actividades para mostrar."
+  },
   "my-account": {
     "title": "Mi cuenta",
     "user-name": "Nombre de usuario",
@@ -29,7 +38,9 @@
     "subtitle":"Accede y empieza a hacer planes",
     "email": "Email",
     "password": "Contraseña",
-    "send": "Iniciar sesión"
+    "send": "Iniciar sesión",
+    "register":" Si aún no tienes una cuenta en konnect no esperes más y",
+    "register-link":"registrate"
   },
   "new-user":{
     "title":"Registro",
@@ -51,6 +62,13 @@
     "title":"Actividades",
     "subtitle":"Elige una actividad y ¡APUNTATE!"
   },
+  "activity":{
+    "place":"Lugar"
+  },
+  "signBtn":{
+    "suscribe":"¡Quiero apuntarme!",
+    "unsuscribe":"Desapuntarme"
+  },
   "create-activity": {
     "title": "Crear una nueva actividad",
     "subtitle": "Así otros usuarios podrán unirse a tu plan",
@@ -63,5 +81,8 @@
     "location": "Ubicación",
     "place": "Lugar",
     "create-activity": "Crear actividad"
+  },
+  "selector":{
+    "elige":"Elige una opción"
   }
 }

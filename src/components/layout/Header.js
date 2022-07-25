@@ -13,7 +13,11 @@ function Header({ className }) {
     /* imagen corporativa */
     <header>
          <div className="logo-container">
-          <img src={logo} className="logo" alt="konnect-logo"></img>
+         <NavLink
+                to="/">
+             <img src={logo} className="logo" alt="konnect-logo"></img>
+
+              </NavLink>  
        </div>
   
         {/* links a crear anuncio y todos los anuncios */}

@@ -1,26 +1,28 @@
-import peopleIcon from "../../../assets/img/user.svg";
 import moment from 'moment';
-import { useTranslation } from "react-i18next";
 import ActivityData from "../common/activityData";
 import ActivityTitle from "../common/activityTitle";
-import InterestBtn from "../common/interestBtn";
-import SignedUpPeople from "../common/signedupPeople";
+import InterestElem from "../common/interestElem";
+import { useAuth } from "../../auth/context";
+import SignUp from "../common/singnUp";
 
 const ActivitySimple = ({title, activityDate, category, location, id}) =>{
+   
+    //const allLocations = useAppLocation();
+   
+    const { loggedUser } = useAuth();
 
-
-
+   
 
     return(
         <article className="activities-item" key={id}>
-            <InterestBtn actId={id} />
-            <p className="category">{category.categoryName}</p> 
+            <InterestElem actId={id} loggedUser={loggedUser}/>
+            {/* <p className="category">{category.categoryName}</p>  */}
             <ActivityTitle title={title} linkId={id} />
             <div className="row">
                 <ActivityData type="date" info={moment(activityDate).format('DD/MM/YYYY')}/>
-                <ActivityData type="location" info={location.location}/>
+                {/* <ActivityData type="location" info={location.location}/> */}
             </div>
-            <SignedUpPeople actId={id} />
+            <SignUp actId={id} loggedUser={loggedUser}/>
         </article>
     );
 

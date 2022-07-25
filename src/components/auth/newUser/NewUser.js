@@ -6,18 +6,15 @@ import FormControls from "../../common/FormControls";
 import FormGroup from "../../common/FormGroup";
 import TextAreaStandar from "../../common/TextAreaStandar";
 import { useNavigate } from "react-router-dom";
-import { useAppLocation } from "../../utility/getData";
 import { useMemo, useState } from "react";
-import CategoriesCombo from "../../activities/common/categoriesCombo";
 import LocationsCombo from "../../activities/common/locationCombo";
 import { createUser } from "../service";
+import moment from "moment";
 
 const NewUser = () => {
   const { t } = useTranslation("global");
 
   const navigate = useNavigate();
-
-  //const locations = useAppLocation();
 
 
   const [info, setInfo] = useState({
@@ -26,7 +23,7 @@ const NewUser = () => {
     email: "",
     password: "",
     birthDate: "",
-    userLocation: "1",
+    userLocation: "",
     gender:"",
     bio:""
   });
@@ -41,11 +38,10 @@ const NewUser = () => {
     }));
   };
 
-console.log(info);
 
-  // const buttonDisabled = useMemo(() => {
-  //   return !userName || !name || !email || !password || !birthDate || !userLocation || !gender || !bio;
-  // }, [userName, name, email, password, birthDate, userLocation, gender, bio]);
+   const buttonDisabled = useMemo(() => {
+     return !userName || !name || !email || !password || !birthDate || !userLocation || !gender || !bio;
+   }, [userName, name, email, password, birthDate, userLocation, gender, bio]);
 
  
 
@@ -135,9 +131,10 @@ console.log(info);
                     onChange={handleInput}
                     name="birthDate"
                     defaultValue={birthDate}
-                    />
+                    max={moment().subtract(18, 'years').format('YYYY-MM-DD')}
+                    /> 
 
-{/* RADIO - Gender */}
+
 <InputStandar
                     label={t("new-user.gender")}
                     type="text"
@@ -148,10 +145,10 @@ console.log(info);
                     />
 
 
-{/* <LocationsCombo
+<LocationsCombo
 handleChange={handleInput}
 defaultValue={userLocation}
-/> */}
+/>
 
 
 
@@ -187,6 +184,8 @@ nextBtn={false}>
           <InputSubmit
             label={t("new-user.register-btn")}
             className={'submit-btn'}
+            disabled={buttonDisabled}
+
           />
         </FormGroup>
 

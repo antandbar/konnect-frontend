@@ -13,7 +13,8 @@ import { useAppLocation, useCategories } from '../../utility/getData';
 import { getLoggedUser } from '../../auth/service';
 import CategoriesCombo from '../common/categoriesCombo';
 import LocationsCombo from '../common/locationCombo';
-
+import { useAuth } from '../../auth/context';
+import moment from 'moment';
 
 const useLoggedUserId = () =>{
   const [user, setUser] = useState();
@@ -44,6 +45,8 @@ const NewActivity = () => {
   });
  
   const{title, description, activityDate, locationId, place, categoryId} = info;
+  
+  const { loggedUser} = useAuth();
 
 
   const handleInput = (e) => {
@@ -59,10 +62,6 @@ const NewActivity = () => {
   }, [title, description, activityDate, locationId, place, categoryId]);
 
 
-  //const loggedUserId = useLoggedUserId
-
-  const loggedUserId = "9";
-
 
  
   const handleSubmit =  (event) => {
@@ -70,7 +69,7 @@ const NewActivity = () => {
 
     createActivity(info).then((createdActivity) => {
       const data = {
-        "userId":9,
+        "userId":loggedUser,
         "activityId":createdActivity.results.id,
         "userStatusId":1   
        };
@@ -83,12 +82,15 @@ const NewActivity = () => {
   }
 
 
+
   return (
     <Page
       title={t("create-activity.title")}
       subtitle={t("create-activity.subtitle")}
       pageClass="register-form form"
     >
+
+
       <form onSubmit={handleSubmit}>
         
           <FormGroup
@@ -143,6 +145,7 @@ defaultValue={categoryId}
             type="date"
             className={'formfield'}
             required
+            min={moment().format('YYYY-MM-DD')}
           />
 
 

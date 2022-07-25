@@ -1,7 +1,8 @@
+import { useTranslation } from "react-i18next";
 import { createStatus, deleteStatus, getActivitiesRelation } from "../service";
 
 
-const interestUser = (data, change) => {
+const signgUpUser = (data, change) => {
     createStatus(data).then( () =>{
         change(1);
     })
@@ -9,7 +10,7 @@ const interestUser = (data, change) => {
     
 
 const unsuscribeUser = (actId, loggedUser, change) =>{
-        getActivitiesRelation('3', loggedUser, actId).then((result)=>{
+        getActivitiesRelation('2', loggedUser, actId).then((result)=>{
              deleteStatus(result.results[0].id).then(() =>{
                 change(2);
             })
@@ -17,18 +18,19 @@ const unsuscribeUser = (actId, loggedUser, change) =>{
 }
 
 
-const InterestBtn = ({actId, loggedUser, isActive, change}) =>{
+const SignedUpBtn = ({actId, loggedUser, isActive, change}) =>{
 
+    const {t} = useTranslation('global');
 
      const data = {
         "userId":loggedUser,
          "activityId":actId,
-        "userStatusId":3
+        "userStatusId":2  
      };
 
 
      const handleSuscribe = (data, change) =>{
-        interestUser(data, change);
+        signgUpUser(data, change);
      }
 
      const handleUnsuscribe = (actId, loggedUser, change) =>{
@@ -40,11 +42,13 @@ const InterestBtn = ({actId, loggedUser, isActive, change}) =>{
         <>
         {
   (isActive)
-  ?( <button className="active interested-btn" onClick={() => {handleUnsuscribe(actId, loggedUser, change)}}>
+  ?( <button className="active singup-btn" onClick={() => {handleUnsuscribe(actId, loggedUser, change)}}>
+  {t("signBtn.unsuscribe")}
   </button>
   )
 
-  :(<button className="interested-btn" onClick={() => {handleSuscribe(data, change)}}>
+  :(<button className="singup-btn" onClick={() => {handleSuscribe(data, change)}}>
+  {t("signBtn.suscribe")}   
   </button>
   )
         }
@@ -53,4 +57,4 @@ const InterestBtn = ({actId, loggedUser, isActive, change}) =>{
 
 }
 
-export default InterestBtn;
+export default SignedUpBtn;
