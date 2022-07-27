@@ -37,6 +37,7 @@ export const login = (credentials) => {
   }
 
   export const createUser = (user) => {
+    console.log(user);
     const url = `${activitiesBaseUrl}/user`;
     return client.post(url, user);
   };

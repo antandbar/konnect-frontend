@@ -7,7 +7,6 @@ import FormGroup from "../../common/FormGroup";
 import TextAreaStandar from "../../common/TextAreaStandar";
 import { useNavigate } from "react-router-dom";
 import { useMemo, useState } from "react";
-import LocationsCombo from "../../activities/common/locationCombo";
 import { createUser } from "../service";
 import moment from "moment";
 
@@ -23,12 +22,12 @@ const NewUser = () => {
     email: "",
     password: "",
     birthDate: "",
-    locationId: "",
+    userLocation: "",
     gender:"",
     bio:""
   });
 
-  const { userName, name, email, password, birthDate, locationId, gender, bio} = info;
+  const { userName, name, email, password, birthDate, userLocation, gender, bio} = info;
 
 
   const handleInput = (e) => {
@@ -40,8 +39,8 @@ const NewUser = () => {
 
 
    const buttonDisabled = useMemo(() => {
-     return !userName || !name || !email || !password || !birthDate || !locationId || !gender || !bio;
-   }, [userName, name, email, password, birthDate, locationId, gender, bio]);
+     return !userName || !name || !email || !password || !birthDate || !userLocation || !gender || !bio;
+   }, [userName, name, email, password, birthDate, userLocation, gender, bio]);
 
 
   const handleSubmit =  (event) => {
@@ -144,11 +143,15 @@ const NewUser = () => {
                     />
 
 
-<LocationsCombo
-handleChange={handleInput}
-defaultValue={locationId}
-/>
-
+<InputStandar
+                    label={t("new-user.location")}
+                    type="text"
+                    className={'formfield'}
+                    required
+                    onChange={handleInput}
+                    name="userLocation"
+                    defaultValue={userLocation}
+                  />
 
 
          <FormControls

@@ -53,7 +53,7 @@
     "name":"Tu nombre",
     "date":"¿Cual es tu fecha de nacimiento?",
     "gender":"¿Con qué género te identificas?",
-    "location":"Selecciona dónde te encuentras",
+    "location":"¿Dónde te encuentras?",
     "group-three-title":"¡Es hora de que te presentes!",
     "bio":"Escribe una pequeña bio para que otros usuarios puedan conocerte",
     "register-btn":"Registrate"

@@ -53,7 +53,7 @@
     "name":"Name",
     "date":"Birthdate",
     "gender":"Gender",
-    "location":"Location",
+    "location":"Where are you?",
     "group-three-title":"Now it's your turn to introduce yourself!",
     "bio":"Write a small bio so other users can know you more",
     "register-btn":"Register"
