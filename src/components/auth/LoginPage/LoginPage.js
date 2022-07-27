@@ -48,7 +48,7 @@ const handleSubmit = async event => {
     setIsLoading(false);
     getLoggedUser().then((userId) => {
        onLogin(userId);
-       const from = location.state?.from?.pathname || '/';
+       const from = location.state?.from?.pathname || '/activities';
     navigate(from, { replace: true });
     })
 

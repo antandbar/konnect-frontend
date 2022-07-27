@@ -14,7 +14,7 @@ function Header({ className }) {
     <header>
          <div className="logo-container">
          <NavLink
-                to="/">
+                to="/activities">
              <img src={logo} className="logo" alt="konnect-logo"></img>
 
               </NavLink>  
