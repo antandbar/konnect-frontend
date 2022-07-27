@@ -3,7 +3,7 @@ import InputStandar from '../../common/InputStandar';
 import TextArea from '../../common/TextAreaStandar';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
-import { getLoggedUser, getUserDetail } from '../service';
+import { getUserDetail } from '../service';
 import moment from 'moment';
 import { useAuth } from '../context';
 
@@ -17,7 +17,7 @@ const useUserData = (id) =>{
       getUserDetail(id).then(user => {
         setUser(user.results[0])
       })
-  },[])
+  },[id])
   return user;
 }
 
@@ -38,7 +38,7 @@ const ProfilePage = () => {
     >
 
     {
-    userData != undefined
+    userData !== undefined
     ? (
       <div>
       <InputStandar

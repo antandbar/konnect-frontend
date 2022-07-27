@@ -16,7 +16,8 @@ const stepForm = (e, type) =>{
           break;
           case 'prev':
               newArticleId = `group-${currentNumber - 1}`;
-          break;        
+          break;     
+          default:   
       }
       changeStep(currentArticleId, newArticleId);
 
