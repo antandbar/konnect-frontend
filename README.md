@@ -23,7 +23,7 @@ npm run build
 Git Backend:
 
 ```sh
-https://github.com/antandbar/myfavoritegroups-backend
+https://github.com/antandbar/konnect-backend.git
 ```
 
 AWS Backend:
