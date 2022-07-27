@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import  LoginPage from '../auth/loginPages/LoginPage';
+import  LoginPage from '../auth/loginPage/LoginPage';
 import Layout from '../layout/Layout';
 import ProfilePage from '../auth/profilePage/ProfilePage';
 import NewActivity from '../activities/newActivity/NewActivityPage';
