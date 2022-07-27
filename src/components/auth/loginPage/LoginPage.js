@@ -17,7 +17,7 @@ const LoginPage = ({onLogin}) => {
     'password': '',
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+
 
   const { email, password } = credentials;
 
@@ -31,7 +31,6 @@ const LoginPage = ({onLogin}) => {
   }; 
 
 
-  const resetError = () => setError(null);
 
 
 const buttonDisabled = useMemo(() => {
@@ -42,7 +41,6 @@ const buttonDisabled = useMemo(() => {
 const handleSubmit = async event => {
   event.preventDefault();
   try {
-    resetError();
     setIsLoading(true);
     await login(credentials);
     setIsLoading(false);
@@ -54,7 +52,7 @@ const handleSubmit = async event => {
 
     
   } catch (error) {
-    setError(error);
+    console.log(error);
     setIsLoading(false);
   }
 };
