@@ -19,6 +19,7 @@ const useIcon = (type) => {
             case 'user':
                 setTypeIcon(userIcon)
                 break;
+            default:
         }
 
     },[type])
@@ -30,7 +31,7 @@ const useIcon = (type) => {
 const useClass = (type) => {
     const [newClass, setNewClass] = useState();
     useEffect(() => {
-    if(type == "user"){
+    if(type === "user"){
         setNewClass("user-profile activity-data");
        }else{
         setNewClass("activity-data");
@@ -51,7 +52,7 @@ const ActivityData = ({ type, info }) => {
 
     return (
         <p className={newClass}>
-            <img className="icon" src={icon}/>
+            <img className="icon" src={icon} alt="icono"/>
             {info}
         </p>
 

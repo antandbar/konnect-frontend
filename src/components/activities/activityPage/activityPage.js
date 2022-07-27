@@ -20,7 +20,7 @@ const useActivity = (id) =>{
     })
 
   
-    },[id])
+    },[id, navigate])
     return activity;
 }
 
