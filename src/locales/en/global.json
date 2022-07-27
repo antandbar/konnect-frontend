@@ -1,4 +1,6 @@
 {
+  "signedup_one":"person signed up",
+  "signedup_other":"people signed up",
   "header": {
     "activities": "Activities",
     "my-plans": "My Plans",
@@ -9,6 +11,15 @@
   "not-found":{
     "title":"Page not found",
     "subtitle":"Oops! It seems that you have lost"
+  },
+  "my-plans": {
+    "title": "My plans",
+    "fav":"Saved",
+    "signedup":"Signed up",
+    "created":"Created"
+  },
+  "empty":{
+    "text": "There are no activities to show."
   },
   "my-account": {
     "title": "My Account",
@@ -27,7 +38,9 @@
     "subtitle":"Access and start making plans",
     "email": "Email",
     "password": "Password",
-    "send": "Login"
+    "send": "Login",
+    "register":"If you don't have a konnect account yet, don't wait any longer and",
+    "register-link":"register"
   },
   "new-user":{
     "title":"Register",
@@ -47,13 +60,19 @@
   },
   "activities-listing":{
     "title":"Activities",
-    "subtitle":"Choose and activity y SIGN UP!",
-    "signedup":"people registered"
+    "subtitle":"Choose and activity y SIGN UP!"
+  },
+  "activity":{
+    "place":"Place"
+  },
+  "signBtn":{
+    "suscribe":"I want to sign up!",
+    "unsuscribe":"Unsuscribe"
   },
   "create-activity": {
     "title": "Create a new activity",
     "subtitle": "So people can join your plan",
-    "group-two-title": "Give us more information about the activity",
+    "group-two-title": "Give us more information about the activity. Timming, plan...",
     "group-one-title": "Tell us about your plan!",
     "name": "Choose a title for the activity",
     "detail": "Describe a little more the activity",
@@ -62,5 +81,14 @@
     "location": "Location",
     "place": "Place",
     "create-activity": "Create activity"
+  },
+  "selector":{
+    "elige":"Select and option"
+  },
+  "filtro":{
+    "categories":"Categories",
+    "location":"Location",
+    "date":"Date",
+    "submit":"Filter"
   }
 }

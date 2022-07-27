@@ -21,7 +21,6 @@ const useActivities = (type, loggedUser) => {
   };
 
 
-
 const Myplans = () => {
     const { t } = useTranslation("global");
 
@@ -29,15 +28,17 @@ const Myplans = () => {
     const [type, setType] = useState('1');
    const activities = useActivities(type, loggedUser);
 
+
+
+
     return (
         <Page
         title={t("my-plans.title")}
       >    
-
 <section className="plans-selector">
-<div className={( type === 1 ) ? 'activo' : '' } onClick={() => setType(1)}>{t("my-plans.created")}</div>
-                <div className={( type === 3 ) ? 'activo' : '' }  onClick={() => setType(3)}>{t("my-plans.fav")}</div>
-                <div className={( type === 2 ) ? 'activo' : '' }  onClick={() => setType(2)}>{t("my-plans.signedup")}</div>
+<div className={( type === '1' ) ? 'activo' : '' } onClick={() => setType('1')}>{t("my-plans.created")}</div>
+                <div className={( type === '3' ) ? 'activo' : '' }  onClick={() => setType('3')}>{t("my-plans.fav")}</div>
+                <div className={( type === '2' ) ? 'activo' : '' }  onClick={() => setType('2')}>{t("my-plans.signedup")}</div>
             </section>
 
             <section className="activities-plans activities-section">
@@ -46,9 +47,9 @@ const Myplans = () => {
             activities.length
             ?(
               <>
+
                 {activities.map(activity => 
                 <ActivitySimple key={activity.id} {...activity}/>
-
                 )}  
               </>
             )

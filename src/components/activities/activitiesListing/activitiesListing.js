@@ -3,16 +3,17 @@ import { useTranslation } from "react-i18next";
 import Page from "../../layout/Page";
 import ActivitySimple from "../activitySingle/activitySimple";
 import EmptyList from "../common/emptyList";
+import FiltersForm from "../common/filtersForm";
 import { getActivities } from "../service";
 
 
-const useActivities = () => {
+const useActivities = ({categoryFilter, locationFilter, dateFilter}) => {
     const [activities, setActivities] = useState([]);
     useEffect(() => {
-      getActivities().then(activities => {
-        setActivities(activities.results)
-    })
-    },[])
+      getActivities(categoryFilter, locationFilter, dateFilter).then(activities => {
+       setActivities(activities.results)
+   })
+    },[categoryFilter, locationFilter, dateFilter])
     return activities;
   };
 
@@ -22,7 +23,10 @@ const useActivities = () => {
   const ActivitiesPage = () =>{
     const { t } = useTranslation("global");
 
-    const allActivities = useActivities();
+    const [allFilters, setAllFilters] = useState({});
+    
+    const allActivities = useActivities(allFilters);
+
 
     return (
         <Page
@@ -30,6 +34,7 @@ const useActivities = () => {
         subtitle={t("activities-listing.subtitle")}
         pageClass="listing-container"
       >    
+      <FiltersForm categorySet={setAllFilters} />
         {
             allActivities.length
             ?(

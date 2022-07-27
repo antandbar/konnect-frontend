@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import '../../assets/scss/style.scss';
 import logo from '../../assets/img/konnect-logo.svg';
@@ -27,43 +27,39 @@ function Header({ className }) {
               <NavLink
                 to="/activities"
                 className={classNames(
-                  ({ isActive }) => (isActive ? 'active' : ''))}>
-                      <span className="menu-title">{t("header.activities")}</span>
+                  ({ isActive }) => (isActive ? 'active' : '')) + " menu-title"}  >
+                     <span>{t("header.activities")}</span>
               </NavLink>  
           </li> 
           <li className="menu-item planes">
           <NavLink
             to="/myplans"
             className={classNames(
-              ({ isActive }) => (isActive ? 'active' : ''))}>
-                  <span className="menu-title">{t("header.my-plans")}</span>
+              ({ isActive }) => (isActive ? 'active' : ''))+ " menu-title"}>
+                  <span> {t("header.my-plans")}</span>
           </NavLink>
           </li>
           <li className="menu-item cuenta">
           <NavLink
             to="/myaccount"
             className={classNames(
-              ({ isActive }) => (isActive ? 'active' : '') )}end>
-                  <span className="menu-title">{t("header.my-account")}</span>
+              ({ isActive }) => (isActive ? 'active' : '') )+ " menu-title"}>
+                   <span>{t("header.my-account")}</span>
           </NavLink>
           </li>
           <li className="menu-item new-activity menu-btn">
           <NavLink
             to="/newactivity"
             className={classNames(
-              ({ isActive }) => (isActive ? 'active' : ''))}>
-                  <span className="menu-title">{t("header.create-activity")}</span>
+              ({ isActive }) => (isActive ? 'active' : ''))+ " menu-title"}>
+                 <span>{t("header.create-activity")}</span>
           </NavLink>
           </li>
-          <li className="menu-item menu-btn login">
           <AuthButton/>
-          </li>
-          <li>
-          <LanguageSwitcher></LanguageSwitcher>
-          </li>
           </ul>
-
         </nav>
+        <LanguageSwitcher></LanguageSwitcher>
+
     </header>
   );
 }

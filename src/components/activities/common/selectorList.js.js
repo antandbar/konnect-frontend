@@ -1,21 +1,19 @@
-import { useState } from "react";
 
-const SelectorList = ({list, value, onChange, ...props}) => {
+const SelectorList = ({list, className, onChange, name, ...props}) => {
 
 
-        const [checked, setChecked] = useState(false);
 
 
     return(
-                <div>
+                <div className={className}>
                         {list.map(item => 
                         <label key={item.id} >
                         <input
-                            type="checkbox"
+                        name={name}
+                            type="radio"
                             value={item.id}
                             id={item.id}
-                            checked={value.includes(item)}
-                            onChange={(e) => setChecked(e.target.checked)}
+                            onChange={onChange}
                             {...props}
                         />
                         <span>{item.name}</span>

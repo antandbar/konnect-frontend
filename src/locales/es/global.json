@@ -75,7 +75,7 @@
     "group-two-title": "Danos más datos sobre la actividad",
     "group-one-title": "¡Cuentanos tu plan!",
     "name": "Elige un título para la actividad",
-    "detail": "Describe un poco más en qué consiste la actividad",
+    "detail": "Describe un poco más en qué consiste la actividad. A qué hora es, qué plan hay..",
     "category": "¿A qué categoría pertenece?",
     "date": "Fecha de la actividad",
     "location": "Ubicación",
@@ -84,5 +84,11 @@
   },
   "selector":{
     "elige":"Elige una opción"
+  },
+  "filtro":{
+    "categories":"Categorias",
+    "location":"Ubicación",
+    "date":"Fecha",
+    "submit":"Filtrar"
   }
 }

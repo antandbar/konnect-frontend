@@ -32,7 +32,7 @@ const useSignedupPeople = (actId, change) => {
 
 
 
-const SignUp = ({actId, loggedUser}) =>{
+const SignUp = ({actId, loggedUser, creator}) =>{
     const [change, setChange] = useState('');
 
     const isActive = useIsActive(loggedUser, actId, change);
@@ -42,7 +42,11 @@ const SignUp = ({actId, loggedUser}) =>{
 
 return(
     <div className="row ends">
-<SignedUpBtn actId={actId} loggedUser={loggedUser} isActive={isActive} change={setChange}/>
+           {(creator === loggedUser)
+           ? ''
+           : (<SignedUpBtn actId={actId} loggedUser={loggedUser} isActive={isActive} change={setChange}/>
+           )
+           } 
 <SignedUpPeople people={people} />
 </div>
 )

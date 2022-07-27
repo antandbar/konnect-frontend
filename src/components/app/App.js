@@ -30,14 +30,14 @@ function App({ isInitiallyLogged, initialLoggedUser }) {
     <AuthContextProvider value={{ isLogged, handleLogin, handleLogout, loggedUser }}>
     <Routes>
       <Route path="/" element={<Layout />}>
-      <Route index element={<RequireAuth><ActivitiesPage/></RequireAuth>} />
-      <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
-      <Route path="/register" element={<NewUser/>} />
-          <Route path="/activities" element={<RequireAuth><ActivitiesPage/></RequireAuth>} />
-          <Route path="/activities/:activityId" element={<RequireAuth><ActivityPage/></RequireAuth>} />
-          <Route path="/newactivity" element={<RequireAuth><NewActivity/></RequireAuth>} />
-          <Route path="/myplans" element={<RequireAuth><Myplans/></RequireAuth>}/>
-          <Route path='/myaccount' element={<RequireAuth><ProfilePage /></RequireAuth>} />
+        <Route index element={<RequireAuth><ActivitiesPage/></RequireAuth>} />
+        <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
+        <Route path="/register" element={<NewUser/>} />
+        <Route path="/activities" element={<RequireAuth><ActivitiesPage/></RequireAuth>} />
+        <Route path="/activities/:activityId" element={<RequireAuth><ActivityPage/></RequireAuth>} />
+        <Route path="/newactivity" element={<RequireAuth><NewActivity/></RequireAuth>} />
+        <Route path="/myplans" element={<RequireAuth><Myplans/></RequireAuth>}/>
+        <Route path='/myaccount' element={<RequireAuth><ProfilePage /></RequireAuth>} />
       </Route>
 
       <Route path="/404" element={<Layout />}>

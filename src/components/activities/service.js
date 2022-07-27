@@ -12,8 +12,12 @@ export const getCategories = () =>{
     return client.get(url);
 }
 
-export const getActivities = () => {
-    const url = `${activitiesBaseUrl}/activities`;
+export const getActivities = (category, location, date) => {
+    let url = `${activitiesBaseUrl}/activities`;
+    if(date || category || location) url += `?`;
+    if(date) url += `&activityDate=${date}`;
+    if(category) url += `&categoryId=${category}`;
+    if(location) url += `&locationId=${location}`;
     return client.get(url);
 }
 

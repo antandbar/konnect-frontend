@@ -23,12 +23,12 @@ const NewUser = () => {
     email: "",
     password: "",
     birthDate: "",
-    userLocation: "",
+    locationId: "",
     gender:"",
     bio:""
   });
 
-  const { userName, name, email, password, birthDate, userLocation, gender, bio} = info;
+  const { userName, name, email, password, birthDate, locationId, gender, bio} = info;
 
 
   const handleInput = (e) => {
@@ -40,10 +40,9 @@ const NewUser = () => {
 
 
    const buttonDisabled = useMemo(() => {
-     return !userName || !name || !email || !password || !birthDate || !userLocation || !gender || !bio;
-   }, [userName, name, email, password, birthDate, userLocation, gender, bio]);
+     return !userName || !name || !email || !password || !birthDate || !locationId || !gender || !bio;
+   }, [userName, name, email, password, birthDate, locationId, gender, bio]);
 
- 
 
   const handleSubmit =  (event) => {
     event.preventDefault();
@@ -147,7 +146,7 @@ const NewUser = () => {
 
 <LocationsCombo
 handleChange={handleInput}
-defaultValue={userLocation}
+defaultValue={locationId}
 />
 
 

@@ -12,7 +12,7 @@ const useCreator = (id) =>{
     const [creator, setCreator] = useState();
     useEffect(() => {
       getCreator(id).then(creator => {
-        setCreator(creator.results[0].user.userName)
+        setCreator(creator.results[0].user)
       })
     },[id])
     return creator;
@@ -26,36 +26,23 @@ const ActivityComplete = ({actId, title, activityDate, category, description, pl
 
     const activityCreator = useCreator(actId);
     const { loggedUser } = useAuth();
-
-    const [newLocation, setNewLocation] = useState();
-        useEffect(() => {
-            if(location !== undefined){
-                setNewLocation(location.location);         
-            }
-          },[location])       
-
-          const [newCategory, setNewCategory] = useState();
-          useEffect(() => {
-              if(category !== undefined){
-                setNewCategory(category.categoryName);         
-              }
-            },[category])  
-
-
+        
 
               return(
     <article>
-            <InterestElem actId={actId} loggedUser={loggedUser}/>
-            <p className="category">{newCategory}</p>
+           <InterestElem actId={actId} creator={activityCreator?.id } loggedUser={loggedUser}/>
+
+           
+            <p className="category">{category?.categoryName}</p>
             <h1 className="title">{title}</h1>
             <div className="row">
-                <ActivityData type="user" info={activityCreator}></ActivityData>
+                <ActivityData type="user" info={activityCreator?.userName}></ActivityData>
                 <ActivityData type="date" info={moment(activityDate).format('DD/MM/YYYY')}/>
-                <ActivityData type="location" info={newLocation}/>
+                <ActivityData type="location" info={location?.location}/>
             </div>
             <p className="place">{t("activity.place")} <b>{place}</b></p>
             <p className="activity-body">{description}</p>
-                <SignUp actId={actId} loggedUser={loggedUser}/>
+                <SignUp actId={actId} creator={activityCreator?.id} loggedUser={loggedUser}/>
     </article>
 
     );

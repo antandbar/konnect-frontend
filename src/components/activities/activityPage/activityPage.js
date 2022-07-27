@@ -12,11 +12,11 @@ const useActivity = (id) =>{
     useEffect(() => {
       getActivity(id).then(activity => {
         setActivity(activity.results[0])
-        if(activity.results.length == 0){
-          //navigate('/404')
+        if(activity.results.length === 0){
+          navigate('/404')
         }
     }).catch(() =>{
-      //navigate('/404')
+      navigate('/404')
     })
 
   

@@ -29,20 +29,28 @@ const useInterestedPeople = (actId, change) => {
 
 
 
-const InterestElem = ({actId, loggedUser}) => {
+const InterestElem = ({actId, loggedUser, creator}) => {
 
   const [change, setChange] = useState('');
 
+
   const isActive = useIsActive(loggedUser, actId, change);
-    const people = useInterestedPeople(actId,change);
+    const people = useInterestedPeople(actId, change);
 
     return (
+      <>
+      {(creator === loggedUser)
+      ? ''
+      : (
         <div className="interested">
-           <InterestedPeople people={people}/>
-            <InterestBtn SignedUpBtn actId={actId} loggedUser={loggedUser} isActive={isActive} change={setChange} />
-        </div>
+        <InterestedPeople people={people}/>
+         <InterestBtn SignedUpBtn actId={actId} loggedUser={loggedUser} isActive={isActive} change={setChange} />
+         </div>
+      )
+}
+    
 
-
+</>
     );
   };
   

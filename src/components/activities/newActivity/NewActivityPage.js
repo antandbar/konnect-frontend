@@ -1,30 +1,19 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import Page from '../../layout/Page';
 import InputStandar from '../../common/InputStandar';
-import Selector from '../../common/Selector';
 import TextAreaStandar from '../../common/TextAreaStandar';
 import InputSubmit from '../../common/InputSubmit';
-import { createActivity, createStatus, getCategories, getLocations } from '../service';
+import { createActivity, createStatus } from '../service';
 import { useNavigate } from 'react-router-dom';
 import FormControls from '../../common/FormControls';
 import FormGroup from '../../common/FormGroup';
-import { useAppLocation, useCategories } from '../../utility/getData';
-import { getLoggedUser } from '../../auth/service';
 import CategoriesCombo from '../common/categoriesCombo';
 import LocationsCombo from '../common/locationCombo';
 import { useAuth } from '../../auth/context';
 import moment from 'moment';
 
-const useLoggedUserId = () =>{
-  const [user, setUser] = useState();
-  useEffect(() => {
-    getLoggedUser().then(userData => {
-    setUser(userData.userId);
-    })
-  },[])
-  return user;
-}
+
 
 
 const NewActivity = () => {
@@ -32,7 +21,6 @@ const NewActivity = () => {
   const { t } = useTranslation("global");
   const navigate = useNavigate();
 
-  const locations = useAppLocation();
 
 
   const [info, setInfo] = useState({
